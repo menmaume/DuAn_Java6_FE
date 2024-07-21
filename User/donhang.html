@@ -62,66 +62,89 @@
     <div id="orderDetailsModal" class="order-details-modal">
         <div class="order-details-content">
             <h2>Thông tin chi tiết đơn hàng</h2>
-            <table>
-                <tr>
-                    <th>Mã đơn</th>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <th>Sản phẩm</th>
-                    <td>Kem Dưỡng</td>
-                </tr>
-                <tr>
-                    <th>Tổng giá trị đơn hàng</th>
-                    <td>6,600,000đ</td>
-                </tr>
-                <tr>
-                    <th>Số lượng</th>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <th>Tên khách hàng</th>
-                    <td>Nguyễn Thị Ngọc Bích</td>
-                </tr>
-                <tr>
-                    <th>Số điện thoại</th>
-                    <td>0349555221</td>
-                </tr>
-                <tr>
-                    <th>Địa chỉ</th>
-                    <td>90 /3b, Xa Giai Xuân, Huyện Phong Điền, Cần Thơ</td>
-                </tr>
-                <tr>
-                    <th>Ngày đặt hàng</th>
-                    <td>23/06/2024</td>
-                </tr>
-                <tr>
-                    <th>Phương thức thanh toán</th>
-                    <td>Ví VNPAY</td>
-                </tr>
-                <tr>
-                    <th>Trạng thái thanh toán</th>
-                    <td>Đã thanh toán</td>
-                </tr>
-            </table>
-            <div class="actions">
-                <button class="action-btn">Xác nhận</button>
-                <button class="action-btn" onclick="closeOrderDetails()">Hủy</button>
+            <h3>Mã đơn : 1</h3>
+
+            <!-- các sản phẩm -->
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="/images/profile.jpg" alt="Profile" style="height: 300px; width: 250px">
+                </div>
+                <div class="col-md-4">
+                    <p> Kem nền </p>
+                </div>
+                <div class="col-md-1">
+                    <p> x1 </p>
+                </div>
+                <div class="col-md-3">
+                    <p>6,600,000đ </p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <table>
+                        <tr>
+                            <th>Tổng giá trị đơn hàng</th>
+                            <td>6,600,000đ</td>
+                        </tr>
+                        <tr>
+                            <th>Giảm giá</th>
+                            <td>600,000đ</td>
+                        </tr>
+                        <tr>
+                            <th>Thành tiền</th>
+                            <td>6,000,000đ</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-8">
+                    <table>
+                        <tr>
+                            <th>Tên khách hàng</th>
+                            <td>Nguyễn Thị Ngọc Bích</td>
+                        </tr>
+                        <tr>
+                            <th>Số điện thoại</th>
+                            <td>0349555221</td>
+                        </tr>
+                        <tr>
+                            <th>Địa chỉ</th>
+                            <td>90 /3b, Xa Giai Xuân, Huyện Phong Điền, Cần Thơ</td>
+                        </tr>
+                        <tr>
+                            <th>Ngày đặt hàng</th>
+                            <td>23/06/2024</td>
+                        </tr>
+                        <tr>
+                            <th>Phương thức thanh toán</th>
+                            <td>Ví VNPAY</td>
+                        </tr>
+                        <tr>
+                            <th>Trạng thái thanh toán</th>
+                            <td>Đã thanh toán</td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div class="actions">
+                    <button class="action-btn">Xác nhận</button>
+                    <button class="action-btn" onclick="closeOrderDetails()">Hủy</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        function showOrderDetails() {
-            var modal = document.getElementById("orderDetailsModal");
-            modal.style.display = "block";
-        }
+        <script>
+            function showOrderDetails() {
+                var modal = document.getElementById("orderDetailsModal");
+                modal.style.display = "block";
+            }
 
-        function closeOrderDetails() {
-            var modal = document.getElementById("orderDetailsModal");
-            modal.style.display = "none";
-        }
-    </script>
+            function closeOrderDetails() {
+                var modal = document.getElementById("orderDetailsModal");
+                modal.style.display = "none";
+            }
+        </script>
 </body>
 
 </html>
