@@ -1,0 +1,57 @@
+/* Container div for email input */
+.bor8 {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.how-pos4-parent {
+    position: relative;
+}
+
+/* Email input field */
+.stext-111 {
+    margin-left: 15px;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #333;
+    width: 100%;
+    border: none;
+    padding-left: 3rem;
+    padding-right: 30px;
+    height: 50px;
+    box-sizing: border-box;
+}
+
+.stext-111:focus {
+    outline: none;
+}
+
+/* Icon inside the input field */
+.how-pos4 {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 20px;
+    pointer-events: none;
+
+}
+
+.pointer-none {
+    pointer-events: none;
+}
+
+/* Margins */
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+/* Placeholder styling */
+.plh3::placeholder {
+    color: #999;
+}
