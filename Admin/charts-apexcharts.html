@@ -926,10 +926,11 @@
                       ]
                     }
                   }
+                  
                   new ApexCharts(document.querySelector("#areaChart"), {
                     series: [{
                       name: "STOCK ABC",
-                      data: series.monthDataSeries1.prices
+                      data: series.monthDataSeries3.prices
                     }],
                     chart: {
                       type: 'area',
@@ -948,7 +949,7 @@
                       text: 'Price Movements',
                       align: 'left'
                     },
-                    labels: series.monthDataSeries1.dates,
+                    labels: series.monthDataSeries3.dates,
                     xaxis: {
                       type: 'datetime',
                     },
