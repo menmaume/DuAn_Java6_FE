@@ -1,0 +1,109 @@
+body {
+    background-color: #f8f9fa; /* Màu nền trang */
+    color: #212529; /* Màu chữ mặc định */
+  }
+
+  .card {
+    border: none; /* Bỏ viền card */
+    border-radius: 10px; /* Bo tròn góc card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng card */
+  }
+
+  .form-control{
+    border-radius: 20px; /* Bo tròn góc input và nút */
+    box-shadow: inset 2px 3px 4px rgba(0, 0, 0, 0.2); /* Shadow bên trong input */
+  }
+
+  .btn-outline-primary {
+    border-radius: 20px; /* Bo tròn góc input và nút */
+    color: #212529; /* Màu chữ nút */
+    border-color: #212529; /* Màu viền nút */
+  }
+
+  .btn-outline-primary:hover,
+  .btn-outline-primary.active,
+  .btn-outline-primary:focus {
+    background-color: #212529; /* Màu nền nút khi hover/active/focus */
+    color: #ffffff; /* Màu chữ nút khi hover/active/focus */
+  }
+
+  .btn-dark {
+    background-color: #212529; /* Màu nền nút đen */
+    border: none; /* Bỏ viền nút đen */
+  }
+
+  .btn-dark:hover {
+    background-color: #000000; /* Màu nền nút đen khi hover */
+  }
+
+  .fa {
+    color: #212529; /* Màu icon */
+  }
+
+  .totalAmountDisplay {
+    color: #212529; /* Màu chữ thành tiền */
+  }
+
+  .container h2 {
+    color: #212529; /* Màu chữ tiêu đề */
+  }
+
+  .btn-group-toggle .btn {
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  #feeDisplay,
+  #shippingFee {
+    color: #dc3545; /* Màu chữ phí vận chuyển */
+  }
+
+  textarea:focus,
+  input:focus,
+  select:focus {
+    border-color: #212529; /* Màu viền khi focus */
+    box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.25); /* Đổ bóng khi focus */
+  }
+
+  .flex-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .flex-container select,
+  .flex-container a {
+    margin-right: 10px;
+  }
+
+  .flex-container a {
+    margin-bottom: 0; /* Remove margin bottom from the button */
+  }
+
+  #applyDiscount{
+    border-radius: 20px;
+  }
+
+  /* Container cho các phần hiển thị tiền */
+.amount-summary {
+  background-color: #ffffff; /* Nền trắng cho container */
+  border-radius: 10px; /* Bo tròn góc */
+  padding: 20px; /* Padding xung quanh */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Khoảng cách giữa các phần tử */
+}
+
+.amount-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25rem; /* Kích thước chữ */
+  font-weight: bold; /* Đậm chữ */
+}
+
+#feeDisplay {
+  color: #1b8238; /* Màu đỏ cho phí vận chuyển */
+}
+
+#totalAmountDisplay {
+  color: #212529; /* Màu chữ cho tổng tiền */
+}
