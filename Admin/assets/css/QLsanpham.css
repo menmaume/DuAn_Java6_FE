@@ -68,11 +68,11 @@
   }
   
   .table-sm {
-    font-size: 14px; /* Điều chỉnh kích thước chữ nhỏ hơn */
+    font-size: 10px; /* Điều chỉnh kích thước chữ nhỏ hơn */
   }
   
   .table-sm th,
   .table-sm td {
-    font-size: 14px; /* Điều chỉnh kích thước chữ nhỏ hơn */
+    font-size: 10px; /* Điều chỉnh kích thước chữ nhỏ hơn */
     white-space: nowrap; /* Ngăn chặn việc xuống dòng */
   }
