@@ -1,0 +1,94 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+  }
+  
+  td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #bebebe;
+  }
+  
+  th {
+    padding: 10px;
+    text-align: left;
+    background-color: #99c6f6;
+    border-bottom: 3px solid #434343;
+  }
+  
+  .chi-tiet-btn {
+    background-color: #99c6f6;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .order-details-modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .order-details-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+  }
+  
+  .order-details-content table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+  }
+  
+  .order-details-content th, .order-details-content td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .order-details-content th {
+    background-color: #f2f2f2;
+  }
+  
+  .order-details-content .actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .order-details-content .action-btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+.order-details-text{
+  font-size: x-small;
+}
