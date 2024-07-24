@@ -571,16 +571,16 @@
 						</ul>
 					</nav>
 
-					<nav class="nav-product">
-						<h2>Lọc Giá</h2>
-						<ul>
-							<li class="li-product"><a href="#">Tất cả</a></li>
-							<li class="li-product"><a href="#">30,000đ - 200,000đ</a></li>
-							<li class="li-product"><a href="#">200,000đ - 500,000đ</a></li>
-							<li class="li-product"><a href="#">500,000đ - 1,000,000đ</a></li>
-							<li class="li-product"><a href="#">1,000,000đ - 2,500,000đ</a></li>
-							<li class="li-product"><a href="#">2,500,000đ+</a></li>
-						</ul>
+					<nav class="nav-filter">
+						<h2>Khoảng Giá</h2>
+						<div class="price-filter">
+							<div class="price-inputs">
+								<input type="text" id="minPriceInput" oninput="updateRange()" placeholder="Từ">
+								-
+								<input type="text" id="maxPriceInput" oninput="updateRange()" placeholder="Đến">
+							</div>
+							<button class="filter-btn" onclick="applyFilter()">Lọc</button>
+						</div>
 					</nav>
 				</aside>
 				<main>
@@ -1423,11 +1423,11 @@
 
 							<div class="rating">
 								<span class="star-rating">
-									<i class="fas fa-star"></i>
-									<i class="fas fa-star"></i>
-									<i class="fas fa-star"></i>
-									<i class="fas fa-star"></i>
-									<i class="fas fa-star"></i>
+									<i class="zmdi zmdi-star"></i>
+									<i class="zmdi zmdi-star"></i>
+									<i class="zmdi zmdi-star"></i>
+									<i class="zmdi zmdi-star"></i>
+									<i class="zmdi zmdi-star"></i>
 								</span>
 								<span class="review-count">(257 đánh giá)</span>
 							</div>
