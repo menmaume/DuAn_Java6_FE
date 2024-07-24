@@ -1,0 +1,145 @@
+.product-container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+aside {
+    width: 250px;
+    float: left;
+    margin-top: 20px;
+}
+
+.nav-product,
+.nav-needs {
+    width: 250px;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-right: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.nav-product h2,
+.nav-needs h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+.nav-product ul,
+.nav-needs ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav-product .li-product,
+.nav-needs .li-need {
+    margin-bottom: 15px;
+}
+
+.nav-product .li-product a,
+.nav-needs .li-need a {
+    text-decoration: none;
+    color: #000000;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-product .li-product a i,
+.nav-needs .li-need a i {
+    margin-right: 10px;
+}
+
+.nav-product .li-product a:hover,
+.nav-needs .li-need a:hover {
+    background-color: #000000;
+    color: white;
+}
+
+/* Specific Styles for Each Brand */
+.nav-product .li-product:nth-child(1) a {
+    border-left: 4px solid #ff69b4;
+    /* E.L.F */
+}
+
+.nav-product .li-product:nth-child(2) a {
+    border-left: 4px solid #ffa07a;
+    /* Makeup Revolution */
+}
+
+.nav-product .li-product:nth-child(3) a {
+    border-left: 4px solid #32cd32;
+    /* Eve Hansen */
+}
+
+.nav-product .li-product:nth-child(4) a {
+    border-left: 4px solid #4682b4;
+    /* ColourPop */
+}
+
+.nav-product .li-product:nth-child(5) a {
+    border-left: 4px solid #ff4500;
+    /* Rimmel London */
+}
+
+.nav-product .li-product:nth-child(6) a {
+    border-left: 4px solid #9400d3;
+    /* L.A. Girl Cosmetics */
+}
+
+/* Specific Styles for Each Need */
+.nav-needs .li-need:nth-child(1) a {
+    border-left: 4px solid #00ced1;
+    /* Dưỡng Ẩm */
+}
+
+.nav-needs .li-need:nth-child(2) a {
+    border-left: 4px solid #8b0000;
+    /* Chống Lão Hóa */
+}
+
+.nav-needs .li-need:nth-child(3) a {
+    border-left: 4px solid #ffd700;
+    /* Kiềm Dầu */
+}
+
+.nav-needs .li-need:nth-child(4) a {
+    border-left: 4px solid #228b22;
+    /* Trị Mụn */
+}
+
+.nav-needs .li-need:nth-child(5) a {
+    border-left: 4px solid #ff6347;
+    /* Làm Sáng Da */
+}
+
+.nav-needs .li-need:nth-child(6) a {
+    border-left: 4px solid #1e90ff;
+    /* Chống Nắng */
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+
+main .col-sm-6 {
+    width: 205px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 8px;
+    height: 350px;
+    padding-bottom: 20px100 !important;
+}
+
+main .block2-pic {
+    border-bottom: 1px solid #ddd;
+}
