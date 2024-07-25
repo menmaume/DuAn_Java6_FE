@@ -183,3 +183,10 @@ main .col-sm-6 {
 main .block2-pic {
     border-bottom: 1px solid #ddd;
 }
+
+.banner-ads {
+    background-color: red;
+}
+.banner-ads img{
+     width: 100%;
+}

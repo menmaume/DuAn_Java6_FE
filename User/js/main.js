@@ -133,6 +133,9 @@
 
     // filter items on button click
     $filter.each(function () {
+
+        
+
         $filter.on('click', 'button', function () {
             var filterValue = $(this).attr('data-filter');
             $topeContainer.isotope({filter: filterValue});
@@ -214,15 +217,50 @@
 
     /*==================================================================
     [ +/- num product ]*/
-    $('.btn-num-product-down').on('click', function(){
-        var numProduct = Number($(this).next().val());
-        if(numProduct > 0) $(this).next().val(numProduct - 1);
+    $(document).ready(function() {
+        var maxQuantity = 20; // Số lượng tối đa mặc định
+        var $maxQuantityMessage = $('#maxQuantityMessage');
+        var $numProductInput = $('.num-product');
+    
+        function updateQuantity() {
+            var numProduct = Number($numProductInput.val());
+            if (numProduct > maxQuantity) {
+                $numProductInput.val(maxQuantity);
+                $maxQuantityMessage.removeClass('d-none');
+            } else if (numProduct <= 0) {
+                $numProductInput.val(1);
+            } else {
+                $maxQuantityMessage.addClass('d-none');
+            }
+        }
+    
+        $('.btn-num-product-down').on('click', function() {
+            var $input = $(this).next();
+            var numProduct = Number($input.val());
+            if (numProduct > 1) {
+                $input.val(numProduct - 1);
+                updateQuantity(); // Cập nhật thông báo khi giảm
+            }
+        });
+    
+        $('.btn-num-product-up').on('click', function() {
+            var $input = $(this).prev();
+            var numProduct = Number($input.val());
+            if (numProduct < maxQuantity) {
+                $input.val(numProduct + 1);
+                updateQuantity(); // Cập nhật thông báo khi tăng
+            } else {
+                $maxQuantityMessage.removeClass('d-none'); // Hiển thị thông báo khi đạt tối đa
+            }
+        });
+    
+        // Xử lý khi người dùng thay đổi giá trị trong input
+        $numProductInput.on('input', function() {
+            updateQuantity();
+        });
     });
-
-    $('.btn-num-product-up').on('click', function(){
-        var numProduct = Number($(this).prev().val());
-        $(this).prev().val(numProduct + 1);
-    });
+    
+    
 
     /*==================================================================
     [ Rating ]*/

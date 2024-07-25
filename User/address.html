@@ -38,7 +38,6 @@
     <!--===============================================================================================-->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="css/cart.css">
 </head>
 
 <body class="animsition">
@@ -54,23 +53,22 @@
                         <a href="#" class="flex-c-m trans-04 p-lr-25"> Trợ giúp </a>
 
                         <a href="" class="flex-c-m trans-04 p-lr-25 dropdown-toggle" data-toggle="dropdown">
-                          <i class="zmdi zmdi-account"></i> 
-                          Tài khoản
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" style="z-index: 1200;">
-                          <div class="dropdown-header">
-                            <a href="profile.html" class="change-photo">Change Photo</a>
-                            <img src="https://via.placeholder.com/80" alt="User Image">
-                            <strong>Danh Thanh Huy</strong>
-                          </div>
-                          <a class="dropdown-item" href="profile.html">Thông tin tài khoản</a>
-                          <a class="dropdown-item" href="order.html">Xem đơn hàng</a>
-                          <a class="dropdown-item" href="shoping-cart.html">Giỏ hàng của tôi</a>
-                          <a class="dropdown-item" href="#">Đổi mật khẩu</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="index.html">Đăng xuất</a>
-                        </div>
-                        
+							<i class="zmdi zmdi-account"></i> 
+							Tài khoản
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" style="z-index: 1200;">
+							<div class="dropdown-header">
+							  <a href="profile.html" class="change-photo">Change Photo</a>
+							  <img src="https://via.placeholder.com/80" alt="User Image">
+							  <strong>Danh Thanh Huy</strong>
+							</div>
+							<a class="dropdown-item" href="profile.html">Thông tin tài khoản</a>
+							<a class="dropdown-item" href="order.html">Xem đơn hàng</a>
+							<a class="dropdown-item" href="shoping-cart.html">Giỏ hàng của tôi</a>
+							<a class="dropdown-item" href="#">Đổi mật khẩu</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="index.html">Đăng xuất</a>
+						</div>
                     </div>
                 </div>
             </div>
@@ -89,7 +87,7 @@
                                 <a href="index.html">Trang chủ</a>
                             </li>
 
-                            <li >
+                            <li>
                                 <a href="product.html">Sản phẩm</a>
                             </li>
 
@@ -307,62 +305,86 @@
     <div class="container">
         <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
             <a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
-                Home
+                Trang chủ
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
 
-            <span class="stext-109 cl4"> Shoping Cart </span>
+            <span class="stext-109 cl4"> Địa chỉ </span>
         </div>
     </div>
 
-    <!-- Thông tin  -->
-    <section id="company-services" class="bg0 p-t-23 p-b-140">
+    <!-- Địa chỉ  -->
+    <section class="bg0 p-t-23 p-b-140">
         <div class="container">
-            <h2>Chỉnh Sửa Thông Tin</h2>
-            <br>
             <div class="row">
-                <div class="col-md-3">
-                    <img src="/images/profile.jpg" alt="Profile" style="height: 300px; width: 250px">
+                <div class="col-md-12">
+                    <h5 class="mb-3">Địa Chỉ</h5>
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th><b>Đ</b>ường, Số nhà</th>
+                                <th>Xã , Phường , Thị Trấn</th>
+                                <th>Quận , Huyện</th>
+                                <th>Tỉnh , Thành Phố</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>12</td>
+                                <td>Hưng Lợi</td>
+                                <td>Ninh Kiểu</td>
+                                <td>Cần Thơ</td>
+                                <td><button class="chi-tiet-btn">Cập nhật</button> <button class="chi-tiet-btn">Xóa</button>
+                                </td>
+                              </tr>
+
+                        </tbody>
+                    </table>
                 </div>
-                <div class="col-md-9">
-                    <form action="/user/index" method="post" enctype="multipart/form-data">
+                <div class="col-md-12">
+                    <h5 class="mb-3">Form Địa Chỉ</h5>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id_diaChi" value="">
+
                         <div class="row mb-3">
-                            <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Hình Ảnh</label>
+                            <label for="Address3" class="col-md-4 col-lg-3 col-form-label">Tỉnh Thành Phố</label>
                             <div class="col-md-8 col-lg-9">
-                                <input type="file" name="photo_file">
+                                <select id="province" class="form-control" name="tinh_ThanhPho"
+                                    onchange="fetchDistricts()">
+                                    <option value="">-- Chọn Tỉnh Thành --</option>
+                                </select>
                             </div>
                         </div>
+
                         <div class="row mb-3">
-                            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Họ và Tên</label>
+                            <label for="quan_Huyen" class="col-md-4 col-lg-3 col-form-label">Quận Huyện</label>
                             <div class="col-md-8 col-lg-9">
-                                <input type="text" class="form-control" name="hoTen" required>
+                                <select id="district" class="form-control" name="quan_Huyen" onchange="fetchWards()">
+                                    <option value="">-- Chọn Quận Huyện --</option>
+                                </select>
                             </div>
                         </div>
+
                         <div class="row mb-3">
-                            <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Số Điện Thoại</label>
+                            <label for="xa_Phuong_Thitran" class="col-md-4 col-lg-3 col-form-label">Xã Phường Thị
+                                Trấn</label>
+                            <div class="col-md-8 col-lg -9">
+                                <select id="ward" class="form-control" name="xa_Phuong_Thitran">
+                                    <option value="">-- Chọn Xã Phường --</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="duong_Sonha" class="col-md-4 col-lg-3 col-form-label">Đường Số Nhà</label>
                             <div class="col-md-8 col-lg-9">
-                                <input type="text" class="form-control" name="sdt" required>
+                                <input type="text" class="form-control" name="duong_Sonha" />
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                            <div class="col-md-8 col-lg-9">
-                                <input type="email" class="form-control" name="email" required>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="diachi" class="col-md-4 col-lg-3 col-form-label">Địa Chỉ</label>
-                            <div class="col-md-8 col-lg-9 row">
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="diachi" required>
-                                </div>
-                                <div class="col-md-3">
-                                    <a href="address.html"><p style="font-size: large;">Chi tiết địa chỉ</a></p>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="text-center">
-                            <button type="submit" class="btn btn-dark">Lưu</button>
+                            <a href="#" class="btn btn-dark" style="border-radius: 20px; padding-inline: 50px;">Lưu</a>
                         </div>
                     </form>
                 </div>
@@ -560,6 +582,287 @@
                 ps.update();
             });
         });
+    </script>
+    <script>
+      const token = "96d82524-2862-11ef-8e53-0a00184fe694"; // Thay thế bằng token thực
+      const shopId = "192566"; // Thay thế bằng shop ID thực
+
+      const provinceId = 220; // ID của tỉnh muốn lấy tên
+      const districtId = 1574; // ID của quận/huyện muốn lấy tên
+      const wardId = "550307"; // ID của phường/xã muốn lấy tên
+
+      document.addEventListener("DOMContentLoaded", function () {
+        fetchProvinces();
+
+        fetchProvinceNameById(provinceId)
+          .then((provinceName) => {
+            document.getElementById("provinceName").textContent =
+              "Tên tỉnh/thành phố: " + provinceName;
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+
+        fetchDistrictNameById(districtId)
+          .then((districtName) => {
+            document.getElementById("districtName").textContent =
+              "Tên quận/huyện: " + districtName;
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+
+        fetchWardNameById(wardId)
+          .then((wardName) => {
+            document.getElementById("wardName").textContent =
+              "Tên phường/xã: " + wardName;
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+
+      // Hàm lấy tên tỉnh/thành phố theo ID
+      function fetchProvinceNameById(provinceId) {
+        return fetch(
+          "https://dev-online-gateway.ghn.vn/shiip/public-api/master-data/province",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Token: token,
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const province = data.data.find(
+              (province) => province.ProvinceID === provinceId
+            );
+            if (province) {
+              return province.ProvinceName;
+            } else {
+              throw new Error("Province not found");
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching province name:", error);
+            throw error;
+          });
+      }
+
+      // Hàm lấy tên quận/huyện theo ID
+      function fetchDistrictNameById(districtId) {
+        return fetch(
+          "https://dev-online-gateway.ghn.vn/shiip/public-api/master-data/district?province_id=" +
+            provinceId +
+            "&shop_id=" +
+            shopId,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Token: token,
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const district = data.data.find(
+              (district) => district.DistrictID === districtId
+            );
+            if (district) {
+              return district.DistrictName;
+            } else {
+              throw new Error("District not found");
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching district name:", error);
+            throw error;
+          });
+      }
+
+      // Hàm lấy tên phường/xã theo ID
+      function fetchWardNameById(wardId) {
+        return fetch(
+          "https://dev-online-gateway.ghn.vn/shiip/public-api/master-data/ward?district_id=" +
+            districtId +
+            "&shop_id=" +
+            shopId,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Token: token,
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const ward = data.data.find((ward) => ward.WardCode === wardId);
+            if (ward) {
+              return ward.WardName;
+            } else {
+              throw new Error("Ward not found");
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching ward name:", error);
+            throw error;
+          });
+      }
+
+      function fetchProvinces() {
+        fetch(
+          "https://dev-online-gateway.ghn.vn/shiip/public-api/master-data/province",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Token: token,
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const provinceSelect = document.getElementById("province");
+            const sortedProvinces = data.data.sort((a, b) =>
+              a.ProvinceName.localeCompare(b.ProvinceName)
+            );
+            sortedProvinces.forEach((province) => {
+              const option = document.createElement("option");
+              option.value = province.ProvinceID;
+              option.textContent = province.ProvinceName;
+              provinceSelect.appendChild(option);
+            });
+          })
+          .catch((error) => console.error("Error fetching provinces:", error));
+      }
+
+      function fetchDistricts() {
+        const provinceId = document.getElementById("province").value;
+        if (!provinceId) return;
+
+        fetch(
+          "https://dev-online-gateway.ghn.vn/shiip/public-api/master-data/district?province_id=" +
+            provinceId +
+            "&shop_id=" +
+            shopId,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Token: token,
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const districtSelect = document.getElementById("district");
+            districtSelect.innerHTML =
+              '<option value="">Chọn Quận/Huyện</option>';
+            const wardSelect = document.getElementById("ward");
+            wardSelect.innerHTML = '<option value="">Chọn Phường/Xã</option>';
+            const sortedDistricts = data.data.sort((a, b) =>
+              a.DistrictName.localeCompare(b.DistrictName)
+            );
+            sortedDistricts.forEach((district) => {
+              const option = document.createElement("option");
+              option.value = district.DistrictID;
+              option.textContent = district.DistrictName;
+              districtSelect.appendChild(option);
+            });
+          })
+          .catch((error) => console.error("Error fetching districts:", error));
+      }
+
+      function fetchWards() {
+        const districtId = document.getElementById("district").value;
+        if (!districtId) return;
+
+        fetch(
+          "https://dev-online-gateway.ghn.vn/shiip/public-api/master-data/ward?district_id=" +
+            districtId +
+            "&shop_id=" +
+            shopId,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Token: token,
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const wardSelect = document.getElementById("ward");
+            wardSelect.innerHTML = '<option value="">Chọn Phường/Xã</option>';
+            const sortedWards = data.data.sort((a, b) =>
+              a.WardName.localeCompare(b.WardName)
+            );
+            sortedWards.forEach((ward) => {
+              const option = document.createElement("option");
+              option.value = ward.WardCode;
+              option.textContent = ward.WardName;
+              wardSelect.appendChild(option);
+            });
+          })
+          .catch((error) => console.error("Error fetching wards:", error));
+      }
+
+      // Hàm định dạng số thành tiền tệ
+      function formatCurrency(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+
+      function calculateShippingFee() {
+        const toDistrictId = document.getElementById("district").value;
+        const toWardCode = document.getElementById("ward").value;
+        if (!toDistrictId || !toWardCode) {
+          alert("Vui lòng chọn đầy đủ thông tin địa điểm");
+          return;
+        }
+
+        const params = new URLSearchParams({
+          from_district_id: 1574,
+          from_ward_code: "550307",
+          service_id: 53320,
+          service_type_id: "",
+          to_district_id: toDistrictId,
+          to_ward_code: toWardCode,
+          height: 10,
+          length: 10,
+          weight: 10,
+          width: 10,
+          insurance_value: 10000,
+          cod_failed_amount: 2000,
+          coupon: "",
+        });
+
+        fetch(
+          "https://dev-online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee?" +
+            params.toString(),
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Token: token,
+              ShopId: shopId,
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const shippingFeeElement = document.getElementById("shippingFee");
+            if (data.code === 200 && data.data) {
+              const formattedShippingFee = formatCurrency(data.data.total);
+              shippingFeeElement.textContent =
+                "Phí vận chuyển: " + formattedShippingFee + " VND";
+            } else {
+              shippingFeeElement.textContent = "Không thể tính phí vận chuyển";
+            }
+          })
+          .catch((error) => {
+            console.error("Error calculating shipping fee:", error);
+            document.getElementById("shippingFee").textContent =
+              "Lỗi khi tính phí vận chuyển";
+          });
+      }
     </script>
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
