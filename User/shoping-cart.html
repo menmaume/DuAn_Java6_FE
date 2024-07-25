@@ -78,6 +78,41 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
+
+    <style>
+      .dropdown-menu {
+        width: 250px; /* Đặt chiều rộng cố định cho dropdown */
+      }
+      .dropdown-header {
+        text-align: center; /* Canh giữa văn bản */
+        padding: 10px;
+        position: relative; /* Để hiển thị liên kết khi di chuột vào hình ảnh */
+      }
+      .dropdown-header img {
+        width: 80px; /* Kích thước của hình ảnh tròn */
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto; /* Canh giữa hình ảnh */
+      }
+      .dropdown-header a.change-photo {
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.6); /* Màu nền mờ cho liên kết */
+        color: #fff; /* Màu chữ trắng */
+        padding: 5px 10px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 12px;
+        display: none; /* Ẩn liên kết theo mặc định */
+      }
+      .dropdown-header:hover a.change-photo {
+        display: block; /* Hiển thị liên kết khi di chuột vào hình ảnh */
+      }
+    </style>
   </head>
   <body class="animsition">
     <!-- Header -->
@@ -91,9 +126,23 @@
             <div class="right-top-bar flex-w h-full">
               <a href="#" class="flex-c-m trans-04 p-lr-25"> Trợ giúp </a>
 
-              <a href="#" class="flex-c-m trans-04 p-lr-25"> Đăng nhập </a>
-
-              <a href="#" class="flex-c-m trans-04 p-lr-25"> Đăng ký </a>
+              <a href="" class="flex-c-m trans-04 p-lr-25 dropdown-toggle" data-toggle="dropdown">
+                <i class="zmdi zmdi-account"></i> 
+                Tài khoản
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" style="z-index: 1200;">
+                <div class="dropdown-header">
+                  <a href="your-change-photo-page-url" class="change-photo">Change Photo</a>
+                  <img src="https://via.placeholder.com/80" alt="User Image">
+                  <strong>Danh Thanh Huy</strong>
+                </div>
+                <a class="dropdown-item" href="profile.html">Thông tin tài khoản</a>
+                <a class="dropdown-item" href="order.html">Xem đơn hàng</a>
+                <a class="dropdown-item" href="shoping-cart.html">Giỏ hàng của tôi</a>
+                <a class="dropdown-item" href="#">Đổi mật khẩu</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="index.html">Đăng xuất</a>
+              </div>
             </div>
           </div>
         </div>
@@ -112,8 +161,8 @@
                   <a href="index.html">Trang chủ</a>
                 </li>
 
-							<li class="label1" data-label1="hot">
-								<a href="shoping-cart.html">Features</a>
+							<li class="active-menu" >
+								<a href="product.html">Sản phẩm</a>
 							</li>
 
                 <li>
