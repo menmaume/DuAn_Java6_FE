@@ -2948,6 +2948,11 @@ input.num-product::-webkit-inner-spin-button {
   border-radius: 23px;
 }
 
+.c-r-bor1{
+  border: red solid;
+  color: red;
+}
+
 .bor2 {
   border-radius: 20px;
 }

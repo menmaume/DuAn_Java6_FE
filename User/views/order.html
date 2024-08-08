@@ -1,0 +1,349 @@
+<div>
+      <!-- breadcrumb -->
+  <div class="container">
+    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+      <a href="#home/0" class="stext-109 cl8 hov-cl1 trans-04">
+        Trang chủ
+        <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+      </a>
+
+      <span class="stext-109 cl4"> Đơn hàng của tôi </span>
+    </div>
+  </div>
+
+  <!-- Đơn hàng  -->
+  <section class="bg0 p-t-23 p-b-140">
+    <div class="container">
+      <div class="p-b-10">
+        <h3 class="ltext-103 cl5">
+          Đơn hàng của bạn
+        </h3>
+      </div>
+
+      <div class="flex-w flex-sb-m p-b-52">
+        <div class="flex-w flex-l-m filter-tope-group m-tb-10">
+          <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter=".tat-ca">
+            Tất cả
+          </button>
+
+          <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".cho-xac-nhan">
+            Chờ xác nhận
+          </button>
+
+          <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".da-xac-nhan">
+            Đã xác nhận
+          </button>
+
+          <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".dang-giao">
+            Đang giao
+          </button>
+
+          <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".da-giao">
+            Đã giao
+          </button>
+
+          <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".da-huy">
+            Đã hủy
+          </button>
+        </div>
+      </div>
+        <div class="container">
+      <form class="bg0 p-b-85 ">
+          <div class="order-list isotope-grid dh">
+
+            <!-------------------------------------TẤT CẢ------------------------------------------->
+            <table class="table-shopping-cart isotope-item tat-ca">
+              <thead class="thead-dark">
+                <tr class="table_head bg-dark">
+                  <th>#</th>
+                  <th>Mã đơn</th>
+                  <th>Tổng tiền</th>
+                  <th>Ngày Đặt</th>
+                  <th>Tùy chọn thanh toán</th>
+                  <th>Trạng thái</th>
+                  <th>Chi tiết đơn hàng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>3.024.210d</td>
+                  <td>17/06/2024 21:52:35</td>
+                  <td>VnPay</td>
+                  <td>Đã giao</td>
+                  <td><a href="#" onclick="showOrderDetails()"><button class="chi-tiet-btn">Chi tiết</a></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>25.223.300d</td>
+                  <td>17/06/2024 21:53:58</td>
+                  <td>VnPay</td>
+                  <td>Đã giao</td>
+                  <td><a href="#" onclick="showOrderDetails()"><button class="chi-tiet-btn">Chi tiết</a></button>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>3</td>
+                  <td>25.235.201d</td>
+                  <td>17/06/2024 21:54:15</td>
+                  <td>VnPay</td>
+                  <td>Đã giao</td>
+                  <td><a href="#" onclick="showOrderDetails()"><button class="chi-tiet-btn">Chi tiết</a></button>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>3.024.210d</td>
+                  <td>17/06/2024 21:52:35</td>
+                  <td>VnPay</td>
+                  <td>Đang giao</td>
+                  <td><a href="#" onclick="showOrderDetails()"><button class="chi-tiet-btn">Chi tiết</a></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>25.223.300d</td>
+                  <td>17/06/2024 21:53:58</td>
+                  <td>VnPay</td>
+                  <td>Đang giao</td>
+                  <td><a href="#" onclick="showOrderDetails()"><button class="chi-tiet-btn">Chi tiết</a></button>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>3</td>
+                  <td>25.235.201d</td>
+                  <td>17/06/2024 21:54:15</td>
+                  <td>VnPay</td>
+                  <td>Đang giao</td>
+                  <td><a href="#" onclick="showOrderDetails()"><button class="chi-tiet-btn">Chi tiết</a></button>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-------------------------------------CHỜ XÁC NHẬN------------------------------------->
+
+            <!------------------------------------ĐÃ XÁC NHẬN--------------------------------------->
+
+            <!-------------------------------------ĐÃ GIAO------------------------------------------>
+            <table class="table-shopping-cart isotope-item da-giao">
+              <thead class="thead-dark">
+                <tr class="table_head bg-dark">
+                  <th>#</th>
+                  <th>Mã đơn</th>
+                  <th>Tổng tiền</th>
+                  <th>Ngày Đặt</th>
+                  <th>Tùy chọn thanh toán</th>
+                  <th>Trạng thái</th>
+                  <th>Chi tiết đơn hàng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>3.024.210d</td>
+                  <td>17/06/2024 21:52:35</td>
+                  <td>VnPay</td>
+                  <td>Đã giao</td>
+                  <td><a href="#" onclick="showOrderDetails()"><button class="chi-tiet-btn">Chi tiết</a></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>25.223.300d</td>
+                  <td>17/06/2024 21:53:58</td>
+                  <td>VnPay</td>
+                  <td>Đã giao</td>
+                  <td><a href="#" onclick="showOrderDetails()"><button class="chi-tiet-btn">Chi tiết</a></button>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>3</td>
+                  <td>25.235.201d</td>
+                  <td>17/06/2024 21:54:15</td>
+                  <td>VnPay</td>
+                  <td>Đã giao</td>
+                  <td><a href="#" onclick="showOrderDetails()"><button class="chi-tiet-btn">Chi tiết</a></button>
+                </tr>
+              </tbody>
+            </table>
+
+
+            <!-------------------------------------ĐANG GIAO------------------------------------------->
+            <table class="table-shopping-cart isotope-item dang-giao">
+              <thead class="thead-dark">
+                <tr class="table_head bg-dark">
+                  <th>#</th>
+                  <th>Mã đơn</th>
+                  <th>Tổng tiền</th>
+                  <th>Ngày Đặt</th>
+                  <th>Tùy chọn thanh toán</th>
+                  <th>Trạng thái</th>
+                  <th>Chi tiết đơn hàng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>3.024.210d</td>
+                  <td>17/06/2024 21:52:35</td>
+                  <td>VnPay</td>
+                  <td>Đang giao</td>
+                  <td><a href="#" onclick="showOrderDetails()"><button class="chi-tiet-btn">Chi tiết</a></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>25.223.300d</td>
+                  <td>17/06/2024 21:53:58</td>
+                  <td>VnPay</td>
+                  <td>Đang giao</td>
+                  <td><a href="#" onclick="showOrderDetails()"><button class="chi-tiet-btn">Chi tiết</a></button>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>3</td>
+                  <td>25.235.201d</td>
+                  <td>17/06/2024 21:54:15</td>
+                  <td>VnPay</td>
+                  <td>Đang giao</td>
+                  <td><a href="#" onclick="showOrderDetails()"><button class="chi-tiet-btn">Chi tiết</a></button>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-------------------------------------ĐÃ GIAO------------------------------------------->
+
+
+
+            <!-------------------------------------ĐÃ HỦY--------------------------------------------->
+
+
+          </div>
+        </div>
+      </form>
+
+      <div id="orderDetailsModal" class="order-details-modal">
+        <div class="order-details-content order-details-text">
+          <h2>Thông tin chi tiết đơn hàng</h2>
+          <h3>Mã đơn : 1</h3>
+
+          <br>
+          <!-- các sản phẩm -->
+          <div class="row">
+            <div class="col-md-1">
+              #
+            </div>
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-3">
+              <p> Tên sản phẩm</p>
+            </div>
+            <div class="col-md-2">
+              <p> Số lượng </p>
+            </div>
+            <div class="col-md-2">
+              <p>Đơn giá </p>
+            </div>
+          </div>
+          <!-- các sản phẩm -->
+          <div class="row">
+            <div class="col-md-1">
+              1
+            </div>
+            <div class="col-md-4">
+              <img src="/images/profile.jpg" alt="Profile" style="height: 300px; width: 250px">
+            </div>
+            <div class="col-md-3">
+              <p> Kem nền </p>
+            </div>
+            <div class="col-md-2">
+              <p> x1 </p>
+            </div>
+            <div class="col-md-2">
+              <p>6.600.000đ </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1">
+              2
+            </div>
+            <div class="col-md-4">
+              <img src="/images/profile.jpg" alt="Profile" style="height: 300px; width: 250px">
+            </div>
+            <div class="col-md-3">
+              <p> Kem dưỡng ẩm </p>
+            </div>
+            <div class="col-md-2">
+              <p> x1 </p>
+            </div>
+            <div class="col-md-2">
+              <p>3.620.000đ </p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <tr>
+                  <th>Tổng giá trị đơn</th>
+                  <td>6.600.000đ</td>
+                </tr>
+                <tr>
+                  <th>Giảm giá</th>
+                  <td>600.000đ</td>
+                </tr>
+                <tr>
+                  <th>Thành tiền</th>
+                  <td>6.000.000đ</td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-8">
+              <table>
+                <tr>
+                  <th>Tên khách hàng</th>
+                  <td>Nguyễn Thị Ngọc Bích</td>
+                </tr>
+                <tr>
+                  <th>Số điện thoại</th>
+                  <td>0349555221</td>
+                </tr>
+                <tr>
+                  <th>Địa chỉ</th>
+                  <td>90 /3b, Xa Giai Xuân, Huyện Phong Điền, Cần Thơ</td>
+                </tr>
+                <tr>
+                  <th>Ngày đặt hàng</th>
+                  <td>23/06/2024</td>
+                </tr>
+                <tr>
+                  <th>Phương thức thanh toán</th>
+                  <td>Ví VNPAY</td>
+                </tr>
+                <tr>
+                  <th>Trạng thái thanh toán</th>
+                  <td>Đã thanh toán</td>
+                </tr>
+              </table>
+            </div>
+
+
+            <div class="actions">
+              <button class="action-btn" onclick="closeOrderDetails()">Xác nhận</button>
+              <button class="action-btn" onclick="closeOrderDetails()">Hủy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

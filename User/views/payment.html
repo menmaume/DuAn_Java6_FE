@@ -1,0 +1,237 @@
+<div class="container py-5">
+    <h2>Thông tin thanh toán</h2>
+    <div class="row">
+      <div class="row">
+        <div class="col-md-8">
+          <form action="" method="">
+            <input
+              type="hidden"
+              id="selectedItemsMap"
+              name="selectedItemsMap"
+            />
+            <input type="hidden" id="diaChiChon" name="diaChiChon" />
+
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="fullName">Họ và tên:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="fullName"
+                      placeholder="Nhập họ và tên"
+                      value=""
+                      readonly
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="phoneNumber">Số điện thoại:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="phoneNumber"
+                      placeholder="Nhập số điện thoại"
+                      value=""
+                      readonly
+                    />
+                  </div>
+                </div>
+
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <label for="diachi">Địa Chỉ</label>
+                    <div class="flex-container">
+                      <select
+                        name="diachiHT"
+                        class="form-control"
+                        id="diachiHT"
+                      >
+                        <option value="">
+                          Số nhà 123, Phú Bình, Phú Tân, An Giang
+                        </option>
+                      </select>
+                      <a
+                        href="#address"
+                        class="btn btn-dark"
+                        style="border-radius: 50%"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Thêm địa chỉ"
+                      >
+                        <i class="fas fa-plus"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <label for="note">Ghi chú:</label>
+                    <textarea
+                      class="form-control"
+                      id="note"
+                      name="note"
+                      rows="3"
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <label for="paymentMethod">Phương thức thanh toán:</label>
+                    <div
+                      class="btn-group btn-group-toggle"
+                      data-toggle="buttons"
+                    >
+                      <label class="btn btn-outline-primary">
+                        <input
+                          type="radio"
+                          name="payment-method"
+                          id="option1"
+                          value="Thanh toán khi nhận hàng"
+                          autocomplete="off"
+                        />
+                        Thanh toán khi nhận hàng
+                      </label>
+                      <label class="btn btn-outline-primary">
+                        <input
+                          type="radio"
+                          name="payment-method"
+                          id="option2"
+                          value="Vnpay"
+                          autocomplete="off"
+                        />
+                        Vnpay
+                      </label>
+                      <label class="btn btn-outline-primary">
+                        <input
+                          type="radio"
+                          name="payment-method"
+                          id="option3"
+                          value="ZaloPay"
+                          autocomplete="off"
+                        />
+                        ZaloPay
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <label for="discountCode"
+                      >Nhập Mã Giảm Giá (Nếu Có):</label
+                    >
+                    <div class="row">
+                      <div class="col-md-6">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="discountCode"
+                          name="discountCode"
+                          placeholder="Nhập mã giảm giá"
+                        />
+                        <p
+                          id="maxQuantityMessage"
+                          class="text-danger d-none blink-animation"
+                        >
+                          Mã giảm giá không hợp lệ hoặc đã hết hạn
+                        </p>
+                        <p
+                          id="maxQuantityMessage2"
+                          class="text-danger d-none blink-animation"
+                        >
+                          Vui lòng nhập mã
+                        </p>
+                      </div>
+                      <div class="col-md-6">
+                        <button
+                          id="applyDiscount"
+                          type="button"
+                          onclick="applyDiscount()"
+                          class="btn btn-dark"
+                        >
+                          Áp dụng
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <div class="amount-summary">
+                      <div class="amount-item">
+                        <span>Tổng tiền:</span>
+                        <span id="totalAmount">200.000đ</span>
+                      </div>
+                      <div class="amount-item">
+                        <span>Phí vận chuyển:</span>
+                        <span id="feeDisplay">0đ</span>
+                      </div>
+                      <div class="amount-item">
+                        <span>Thành tiền:</span>
+                        <!-- <span id="totalAmountDisplay" class="totalAmountDisplay">
+                              <fmt:formatNumber value="${totalAmount}" pattern="#,###đ" />
+                            </span>
+                             -->
+                        200.000đ
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <a href="confirmation_order.html" class="btn btn-dark"
+                    >Thanh toán</a
+                  >
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <i class="fa fa-truck fa-5x"></i>
+                </div>
+                <div class="col-md-6">
+                  <h3>Giao hàng miễn phí</h3>
+                  <p>
+                    Giao hàng miễn phí toàn quốc cho đơn hàng từ 500.000đ.
+                  </p>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <i class="fa fa-money-bill fa-5x"></i>
+                </div>
+                <div class="col-md-6">
+                  <h3>Giá cả cạnh tranh</h3>
+                  <p>
+                    Cam kết mang đến cho khách hàng sản phẩm chất lượng với
+                    giá cả cạnh tranh nhất thị trường.
+                  </p>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <i class="fa fa-gift fa-5x"></i>
+                </div>
+                <div class="col-md-6">
+                  <h3>Khuyến mãi hấp dẫn</h3>
+                  <p>
+                    Cung cấp nhiều chương trình khuyến mãi hấp dẫn cho khách
+                    hàng throughout the year.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

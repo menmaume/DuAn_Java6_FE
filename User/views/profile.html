@@ -1,0 +1,69 @@
+<div>
+        <!-- breadcrumb -->
+        <div class="container">
+            <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+                <a href="#home/0" class="stext-109 cl8 hov-cl1 trans-04">
+                    Home
+                    <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+                </a>
+    
+                <span class="stext-109 cl4"> Shoping Cart </span>
+            </div>
+        </div>
+    
+        <!-- Thông tin  -->
+        <section id="company-services" class="bg0 p-t-23 p-b-140">
+            <div class="container">
+                <h2>Chỉnh Sửa Thông Tin</h2>
+                <br>
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="/images/profile.jpg" alt="Profile" style="height: 300px; width: 250px">
+                    </div>
+                    <div class="col-md-9">
+                        <form action="/user/index" method="post" enctype="multipart/form-data">
+                            <div class="row mb-3">
+                                <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Hình Ảnh</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input type="file" name="photo_file">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Họ và Tên</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input type="text" class="form-control" name="hoTen" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Số Điện Thoại</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input type="text" class="form-control" name="sdt" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input type="email" class="form-control" name="email" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="diachi" class="col-md-4 col-lg-3 col-form-label">Địa Chỉ</label>
+                                <div class="col-md-8 col-lg-9 row">
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="diachi" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="#address"><p style="font-size: large;">Chi tiết địa chỉ</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-dark">Lưu</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+</div>
