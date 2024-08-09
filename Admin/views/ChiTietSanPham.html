@@ -1,0 +1,128 @@
+<div class="pagetitle">
+    <h1> Chi Tiết Sản Phẩm</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item">Forms</li>
+            <li class="breadcrumb-item active">Product Details</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Chi Tiết Sản Phẩm</h5>
+        <!-- Small tables -->
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Mã Chi Tiết SP</th>
+                    <th scope="col">Mã Sản Phẩm</th>
+                    <th scope="col">Mã Dung Tích</th>
+                    <th scope="col">Mã Công Dụng</th>
+                    <th scope="col">Số Lượng</th>
+                    <th scope="col">Giá</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">123</th>
+                    <td> Chà Nel </td>
+                    <td> Gu Sờ </td>
+                    <td> A di đà </td>
+                    <td> 10 </td>
+                    <td> 1.000.000</td>
+
+                </tr>
+                <tr>
+                    <th scope="row">123</th>
+                    <td> Chà Nel </td>
+                    <td> Gu Sờ </td>
+                    <td> A di đà </td>
+                    <td> 10 </td>
+                    <td> 1.000.000</td>
+
+                </tr>
+            </tbody>
+        </table>
+        <!-- End small tables -->
+
+    </div>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Chi Tiết Sản Phẩm</h5>
+                    <form>
+                        <div class="row mb-3">
+                            <label for="inputText1" class="col-sm-4 col-form-label">Mã Chi Tiết SP</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputText1" disabled>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="selectBrand" class="col-sm-4 col-form-label">Mã Sản Phẩm</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="selectBrand">
+                                    <option value="">Chọn Mã Sản Phẩm</option>
+                                    <option value="brand1">Chà Neo</option>
+                                    <option value="brand2">Gu Xì</option>
+                                    <option value="brand3">Đì O</option>
+                                    <!-- Add other options as needed -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="selectBrand" class="col-sm-4 col-form-label">Mã Dung Tích</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="selectBrand">
+                                    <option value="">Chọn Mã Dung Tích</option>
+                                    <option value="brand1">Chà Neo</option>
+                                    <option value="brand2">Gu Xì</option>
+                                    <option value="brand3">Đì O</option>
+                                    <!-- Add other options as needed -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="selectBrand" class="col-sm-4 col-form-label">Mã Công Dụng</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="selectBrand">
+                                    <option value="">Chọn Mã Công Dụng</option>
+                                    <option value="brand1">Chà Neo</option>
+                                    <option value="brand2">Gu Xì</option>
+                                    <option value="brand3">Đì O</option>
+                                    <!-- Add other options as needed -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputText2" class="col-sm-4 col-form-label">Số Lượng</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputText2">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputPrice" class="col-sm-4 col-form-label">Giá</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputPrice" oninput="dinhDangVND(this)">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end mt-4">
+                            <button type="button" class="btn btn-success me-2">Thêm</button>
+                            <button type="button" class="btn btn-warning me-2">Sửa</button>
+                            <button type="button" class="btn btn-danger">Xóa</button>
+                        </div>
+                    </form><!-- End General Form Elements -->
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+
+</main>

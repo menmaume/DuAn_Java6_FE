@@ -1,0 +1,128 @@
+<section class="section">
+    <div class="row">
+
+        <!-- Nội dung  -->
+        <!-- table -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Quản Lý Account</h5>
+
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th><a href="/admin/account/index?field=tenDN">Tên Đăng Nhập</a></th>
+                                    <th><a href="/admin/account/index?field=hoTen">Họ Tên</a></th>
+                                    <th><a href="/admin/account/index?field=sdt">Số Điện Thoại</a></th>
+                                    <th><a href="/admin/account/index?field=email">Email</a></th>
+                                    <th><a href="/admin/account/index?field=role">Role</a></th>
+                                    <th><a href="/admin/account/index?field=tthd">Trạng Thái</a></th>
+                                    <th>Ảnh</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="item" items="${page.content}">
+                                    <tr>
+                                        <td>1</td>
+                                        <td>${item.tenDN}</td>
+                                        <td>${item.hoTen}</td>
+                                        <td>${item.sdt}</td>
+                                        <td>${item.email}</td>
+                                        <td>${item.role.roles}</td>
+                                        <td>${item.tthd.trangThai}</td>
+                                        <td><img src="/images/${item.img}" alt="" style="width: 50px; height: 50px">
+                                        </td>
+                                        <td>
+                                            <div class="icon">
+                                                <a href="/admin/account/edit/${item.tenDN}"><i
+                                                        class="bi bi-pencil-fill"></i></a>
+                                                <a href="/admin/account/delete/${item.tenDN}"><i
+                                                        class="ri-delete-bin-5-fill"></i></a>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+                        <c:forEach begin="1" end="${page.totalPages}" step="1" var="number">
+                            <a href="/admin/account/index?field=${field}&p=${number-1}">${number}</a>
+                        </c:forEach>
+
+                        <hr>
+                        <br>
+                        <h5 class="card-title">Thông tin </h5>
+                        <!-- Form  -->
+                        <form action="/admin/account/index" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="tenDN" value="${item.tenDN}">
+                            <input type="hidden" name="hoTen" value="${item.hoTen}">
+                            <input type="hidden" name="matKhau" value="${item.matKhau}">
+                            <input type="hidden" name="sdt" value="${item.sdt}">
+                            <input type="hidden" name="email" value="${item.email}">
+                            <input type="hidden" name="img" value="${item.img}">
+                            <div class="row ">
+                                <label for="inputName" class="col-sm-2 col-form-label">Tên Đăng Nhập</label>
+                                <label class="col-sm-4 col-form-label">${item.tenDN}</label>
+                                <label for="inputName" class="col-sm-2 col-form-label">Họ và Tên</label>
+                                <label class="col-sm-4 col-form-label">${item.hoTen}</label>
+                            </div>
+                            <div class="row ">
+                                <label for="inputName" class="col-sm-2 col-form-label">Role</label>
+                                <div class="col-sm-4">
+                                    <div id="inputState" class="d-flex align-items-center">
+                                        <div class="form-check" style="margin-left: 20px">
+                                            <input class="form-check-input" type="radio" name="role.Idrole" id="role1"
+                                                value="1">
+                                            <label class="form-check-label" for="role1">
+                                                Role 1
+                                            </label>
+                                        </div>
+                                        <div class="form-check" style="margin-left: 20px">
+                                            <input class="form-check-input" type="radio" name="role.Idrole" id="role2"
+                                                value="2">
+                                            <label class="form-check-label" for="role2">
+                                                Role 2
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <label for="inputName" class="col-sm-2 col-form-label">Trạng Thái</label>
+                                <div class="col-sm-4">
+                                    <div id="inputState" class="d-flex align-items-center">
+                                        <div class="form-check" style="margin-left: 20px">
+                                            <input class="form-check-input" type="radio" name="tthd.Idtthd" id="status1"
+                                                value="1">
+                                            <label class="form-check-label" for="status1">
+                                                Status 1
+                                            </label>
+                                        </div>
+                                        <div class="form-check" style="margin-left: 20px">
+                                            <input class="form-check-input" type="radio" name="tthd.Idtthd" id="status2"
+                                                value="2">
+                                            <label class="form-check-label" for="status2">
+                                                Status 2
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <a href="/admin/account/index"><button class="btn btn-primary">Quay
+                                        lại</button></a>
+                                <button type="submit" class="btn btn-primary">Cập Nhật</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+</main>
