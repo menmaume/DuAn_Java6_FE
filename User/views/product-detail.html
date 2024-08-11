@@ -1,4 +1,4 @@
-<div>
+<div >
         <!-- breadcrumb -->
         <div class="container">
             <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -17,9 +17,9 @@
           </div>
       
           <!-- Product Detail -->
-          <section class="sec-product-detail bg0 p-t-65 p-b-60">
+          <section  class="sec-product-detail  p-t-65 p-b-60">
             <div class="container">
-              <div class="row">
+              <div class="row" ng-show="productDetail && !error">
                 <div class="col-md-6 col-lg-7 p-b-30">
                   <div class="p-l-25 p-r-30 p-lr-0-lg">
                     <div class="wrap-slick3 flex-sb flex-w">
@@ -29,17 +29,17 @@
                       <div class="slick3 gallery-lb">
                         <div
                           class="item-slick3"
-                          data-thumb=" images/product/sua-rua-mat/1_Acnes_CreamyWash100g.webp"
+                          data-thumb=" images/product/{{productDetail.hinh[0].img}}"
                         >
                           <div class="wrap-pic-w pos-relative">
                             <img
-                              src=" images/product/sua-rua-mat/1_Acnes_CreamyWash100g.webp"
+                              src=" images/product/{{productDetail.hinh[0].img}}"
                               alt="IMG-PRODUCT"
                             />
       
                             <a
                               class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                              href=" images/product/sua-rua-mat/1_Acnes_CreamyWash100g.webp"
+                              href="images/product/{{productDetail.hinh[0].img}}"
                             >
                               <i class="fa fa-expand"></i>
                             </a>
@@ -48,17 +48,17 @@
       
                         <div
                           class="item-slick3"
-                          data-thumb="images/product/sua-rua-mat/sp1.jpg"
+                          data-thumb="images/product/{{productDetail.hinh[1].img}}"
                         >
                           <div class="wrap-pic-w pos-relative">
                             <img
-                              src="images/product/sua-rua-mat/sp1.jpg"
+                              src="images/product/{{productDetail.hinh[1].img}}"
                               alt="IMG-PRODUCT"
                             />
       
                             <a
                               class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                              href="images/product/sua-rua-mat/sp1.jpg"
+                              href="images/product/{{productDetail.hinh[1].img}}"
                             >
                               <i class="fa fa-expand"></i>
                             </a>
@@ -67,17 +67,17 @@
       
                         <div
                           class="item-slick3"
-                          data-thumb="images/product/sua-rua-mat/sp3.jpg"
+                          data-thumb="images/product/{{productDetail.hinh[2].img}}"
                         >
                           <div class="wrap-pic-w pos-relative">
                             <img
-                              src="images/product/sua-rua-mat/sp3.jpg"
+                              src="images/product/{{productDetail.hinh[2].img}}"
                               alt="IMG-PRODUCT"
                             />
       
                             <a
                               class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                              href="images/product/sua-rua-mat/sp3.jpg"
+                              href="images/product/{{productDetail.hinh[2].img}}"
                             >
                               <i class="fa fa-expand"></i>
                             </a>
@@ -91,11 +91,11 @@
                 <div class="col-md-6 col-lg-5 p-b-30">
                   <div class="p-r-50 p-t-5 p-lr-0-lg">
                     <h4 class="mtext-105 cl2 js-name-detail p-b-14">
-                      <strong>Sữa Rửa Mặt Acnes Trị Mụn Creamy Wash</strong>
+                      <strong>{{productDetail.maSP.tenSP}}</strong>
                     </h4>
       
                     <span class="mtext-106 cl2">
-                      <strong> 65.000 ₫ </strong>
+                      <strong> {{productDetail.gia}}₫ </strong>
                     </span>
       
                     <div class="rating">
@@ -110,10 +110,7 @@
                     </div>
       
                     <p class="stext-102 cl3 p-t-23">
-                      Sữa rửa mặt Acnes trị mụn Creamy Wash 100g là kem rửa mặt hàng
-                      ngày với công thức đột phá Trio-Activ, giúp rửa sạch bụi bẩn,
-                      kháng khuẩn gây mụn tận sâu lỗ chân lông và ngăn ngừa mụn tuổi
-                      dậy thì hiệu quả.
+                      {{productDetail.maSP.thongTinSanPham}}
                     </p>
       
                     <!--  -->
@@ -121,30 +118,11 @@
                       <div class="flex-w flex-r-m p-b-10">
                         <div class="size-203 flex-c-m respon6">Dung Tích</div>
                         <div class="size-204 respon6-next">
-                          <button class="size-btn">100g</button>
-                          <button class="size-btn">68g</button>
-                          <button class="size-btn">50g</button>
+                          <button class="size-btn">{{productDetail.dungTich.dungTich}}</button>
                         </div>
                       </div>
       
-                      <!-- <div class="flex-w flex-r-m p-b-10">
-                                      <div class="size-203 flex-c-m respon6">
-                                          Color
-                                      </div>
-      
-                                      <div class="size-204 respon6-next">
-                                          <div class="rs1-select2 bor8 bg0">
-                                              <select class="js-select2" name="time">
-                                                  <option>Choose an option</option>
-                                                  <option>Red</option>
-                                                  <option>Blue</option>
-                                                  <option>White</option>
-                                                  <option>Grey</option>
-                                              </select>
-                                              <div class="dropDownSelect2"></div>
-                                          </div>
-                                      </div>
-                                  </div>  -->
+                      
       
                       <div class="flex-w flex-r-m p-b-10">
                         <div class="size-203 flex-c-m respon6">Số Lượng</div>
@@ -170,7 +148,7 @@
                             </div>
                           </div>
                           <div class="d-flex">
-                            <p>Còn lại: <span id="sanPhamSoLuong">20</span></p>
+                            <p>Còn lại: <span id="sanPhamSoLuong">{{productDetail.soluong}}</span></p>
                           </div>
                         </div>
                       </div>
@@ -231,7 +209,7 @@
                 </div>
               </div>
       
-              <div class="bor10 m-t-50 p-t-43 p-b-40">
+              <div ng-if="productDetail && !error" class="bor10 m-t-50 p-t-43 p-b-40">
                 <!-- Tab01 -->
                 <div class="tab01">
                   <!-- Nav tabs -->
@@ -284,13 +262,7 @@
                     >
                       <div class="how-pos2 p-lr-15-md">
                         <p class="stext-102 cl6">
-                          <strong>Sữa Rửa Mặt Acnes Trị Mụn Creamy Wash</strong> là
-                          một sản phẩm chăm sóc da chuyên biệt, được thiết kế để giúp
-                          làm sạch da hiệu quả đồng thời hỗ trợ điều trị mụn. Với công
-                          thức độc quyền kết hợp giữa các thành phần làm sạch sâu và
-                          dưỡng ẩm, sản phẩm không chỉ giúp loại bỏ bụi bẩn, dầu thừa
-                          và tế bào chết trên da, mà còn giúp giảm thiểu mụn và ngăn
-                          ngừa tình trạng mụn quay trở lại.
+                          {{productDetail.maSP.thongTinSanPham}}
                         </p>
                       </div>
                     </div>
@@ -301,25 +273,7 @@
                           <div class="usage-guide">
                             <h3 class="guide-title">Hướng Dẫn Sử Dụng</h3>
                             <p class="guide-description">
-                              1. Làm ướt mặt với nước ấm.
-                            </p>
-                            <p class="guide-description">
-                              2. Lấy một lượng vừa đủ Sữa Rửa Mặt Acnes Trị Mụn Creamy
-                              Wash ra lòng bàn tay.
-                            </p>
-                            <p class="guide-description">
-                              3. Tạo bọt bằng cách xoa tay lại với nhau và thoa lên
-                              mặt.
-                            </p>
-                            <p class="guide-description">
-                              4. Massage nhẹ nhàng để làm sạch da và trị mụn.
-                            </p>
-                            <p class="guide-description">
-                              5. Rửa sạch mặt với nước và lau khô bằng khăn sạch.
-                            </p>
-                            <p class="guide-description">
-                              Sử dụng đều đặn 2 lần mỗi ngày vào buổi sáng và tối để
-                              đạt hiệu quả tốt nhất.
+                              {{productDetail.maSP.huongDanSuDung}}
                             </p>
                           </div>
                         </div>
@@ -336,29 +290,41 @@
                                 Tên sản phẩm
                               </span>
                               <span class="stext-102 cl6 size-206">
-                                Sữa Rửa Mặt Acnes Trị Mụn Creamy Wash
+                                {{productDetail.maSP.tenSP}}
                               </span>
                             </li>
                             <li class="flex-w flex-t p-b-7">
                               <span class="stext-102 cl3 size-205">
                                 Thương hiệu
                               </span>
-                              <span class="stext-102 cl6 size-206"> Acnes </span>
+                              <span class="stext-102 cl6 size-206">
+                                {{productDetail.maSP.thuongHieu.tenthuongHieu}}
+                              </span>
                             </li>
                             <li class="flex-w flex-t p-b-7">
                               <span class="stext-102 cl3 size-205"> Dung tích </span>
-                              <span class="stext-102 cl6 size-206"> 100ml </span>
+                              <span class="stext-102 cl6 size-206">
+                                 {{productDetail.dungTich.dungTich}} 
+                                </span>
                             </li>
                             <li class="flex-w flex-t p-b-7">
-                              <span class="stext-102 cl3 size-205"> Loại da </span>
+                              <span class="stext-102 cl3 size-205"> Xuất xứ </span>
                               <span class="stext-102 cl6 size-206">
-                                Da mụn, da nhờn
+                                {{productDetail.maSP.xuatXu}}
                               </span>
                             </li>
                             <li class="flex-w flex-t p-b-7">
                               <span class="stext-102 cl3 size-205"> Công dụng </span>
                               <span class="stext-102 cl6 size-206">
-                                Làm sạch da, trị mụn, giảm nhờn
+                                {{productDetail.congDung.congDung}}
+                              </span>
+                            </li>
+                            <li class="flex-w flex-t p-b-7">
+                              <span class="stext-102 cl3 size-205">
+                                Đặc tính
+                              </span>
+                              <span class="stext-102 cl6 size-206">
+                                {{productDetail.maSP.dacTinh}}
                               </span>
                             </li>
                             <li class="flex-w flex-t p-b-7">
@@ -366,28 +332,7 @@
                                 Thành phần chính
                               </span>
                               <span class="stext-102 cl6 size-206">
-                                Acid Salicylic, Glycerin, Chiết xuất tự nhiên
-                              </span>
-                            </li>
-                            <li class="flex-w flex-t p-b-7">
-                              <span class="stext-102 cl3 size-205">
-                                Hướng dẫn sử dụng
-                              </span>
-                              <span class="stext-102 cl6 size-206">
-                                Lấy một lượng vừa đủ, tạo bọt và massage lên da, rửa
-                                sạch với nước.
-                              </span>
-                            </li>
-                            <li class="flex-w flex-t p-b-7">
-                              <span class="stext-102 cl3 size-205"> Giá </span>
-                              <span class="stext-102 cl6 size-206"> 65,000 ₫ </span>
-                            </li>
-                            <li class="flex-w flex-t p-b-7">
-                              <span class="stext-102 cl3 size-205">
-                                Đặc điểm nổi bật
-                              </span>
-                              <span class="stext-102 cl6 size-206">
-                                Công thức creamy làm sạch sâu, dưỡng ẩm, chống viêm.
+                                {{productDetail.maSP.thanhPhan}}
                               </span>
                             </li>
                           </ul>
@@ -524,9 +469,8 @@
               </div>
             </div>
           </section>
-      
           <!-- Related Products -->
-          <section class="sec-relate-product bg0 p-t-45 p-b-105">
+          <section class="sec-relate-product  p-t-45 p-b-105">
             <div class="container">
               <div class="p-b-45">
                 <h3 class="ltext-106 cl5 txt-center">Sản Phẩm Liên Quan</h3>
@@ -535,12 +479,12 @@
               <!-- Slide2 -->
               <div class="wrap-slick2">
                 <div class="slick2">
-                  <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                  <div ng-repeat="itemSP in ctsp" class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
                     <!-- Block2 -->
                     <div class="block2">
                       <div class="block2-pic hov-img0">
                         <img
-                          src="images/product/sua-rua-mat/8_SVR_hong200ml.webp"
+                          src="images/product/{{itemSP.hinh[0].img}}"
                           alt="IMG-PRODUCT"
                         />
       
@@ -555,14 +499,14 @@
                       <div class="block2-txt flex-w flex-t p-t-14">
                         <div class="block2-txt-child1 flex-col-l">
                           <a
-                            href="#product-detail"
+                            href="" ng-click="btnXemChiTiet(itemSP.maCTSP)"
                             class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
                           >
-                            Sữa Rửa Mặt SVR Hồng Topialyse Gel Lavant 200ml
+                          {{itemSP.maSP.tenSP}}
                           </a>
       
                           <span class="stext-105 cl3">
-                            288,000₫
+                            {{itemSP.gia}}₫
                             <del>320,000₫</del>
                           </span>
                         </div>
@@ -588,369 +532,315 @@
                     </div>
                   </div>
       
-                  <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                    <!-- Block2 -->
-                    <div class="block2">
-                      <div class="block2-pic hov-img0">
-                        <img
-                          src="images/product/kem-chong-nang/3_Anessa_Gel_90g.webp"
-                          alt="IMG-PRODUCT"
-                        />
-      
-                        <a
-                          href="#"
-                          class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
-                        >
-                          Xem
-                        </a>
-                      </div>
-      
-                      <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l">
-                          <a
-                            href="#product-detail"
-                            class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
-                          >
-                            Kem Chống Nắng Anessa Gel Perfect UV Sunscreen Skincare
-                            SPF50+ PA++++ 90g
-                          </a>
-      
-                          <span class="stext-105 cl3">
-                            460,000₫
-                            <del>575,000₫</del>
-                          </span>
-                        </div>
-      
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                          <a
-                            href="#"
-                            class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"
-                          >
-                            <img
-                              class="icon-heart1 dis-block trans-04"
-                              src="images/icons/icon-heart-01.png"
-                              alt="ICON"
-                            />
-                            <img
-                              class="icon-heart2 dis-block trans-04 ab-t-l"
-                              src="images/icons/icon-heart-02.png"
-                              alt="ICON"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-      
-                  <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                    <!-- Block2 -->
-                    <div class="block2">
-                      <div class="block2-pic hov-img0">
-                        <img
-                          src="images/product/kem-chong-nang/2_DBH_UVShield_60ml.webp"
-                          alt="IMG-PRODUCT"
-                        />
-      
-                        <a
-                          href="#"
-                          class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
-                        >
-                          Xem
-                        </a>
-                      </div>
-      
-                      <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l">
-                          <a
-                            href="#product-detail"
-                            class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
-                          >
-                            Kem Chống Nắng DBH Bản Hàn UV Shield SPF50+ PA+++ 60ml
-                          </a>
-      
-                          <span class="stext-105 cl3"> 1,300,000₫ </span>
-                        </div>
-      
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                          <a
-                            href="#"
-                            class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"
-                          >
-                            <img
-                              class="icon-heart1 dis-block trans-04"
-                              src="images/icons/icon-heart-01.png"
-                              alt="ICON"
-                            />
-                            <img
-                              class="icon-heart2 dis-block trans-04 ab-t-l"
-                              src="images/icons/icon-heart-02.png"
-                              alt="ICON"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-      
-                  <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                    <!-- Block2 -->
-                    <div class="block2">
-                      <div class="block2-pic hov-img0">
-                        <img
-                          src="images/product/sua-rua-mat/7_simple150ml.webp"
-                          alt="IMG-PRODUCT"
-                        />
-      
-                        <a
-                          href="#"
-                          class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
-                        >
-                          Xem
-                        </a>
-                      </div>
-      
-                      <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l">
-                          <a
-                            href="#product-detail"
-                            class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
-                          >
-                            Sữa Rửa Mặt Simple Purifying Gel Wash Daily Skin Detox
-                            150ml
-                          </a>
-      
-                          <span class="stext-105 cl3"> 132,000₫ </span>
-                        </div>
-      
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                          <a
-                            href="#"
-                            class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"
-                          >
-                            <img
-                              class="icon-heart1 dis-block trans-04"
-                              src="images/icons/icon-heart-01.png"
-                              alt="ICON"
-                            />
-                            <img
-                              class="icon-heart2 dis-block trans-04 ab-t-l"
-                              src="images/icons/icon-heart-02.png"
-                              alt="ICON"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-      
-                  <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                    <!-- Block2 -->
-                    <div class="block2">
-                      <div class="block2-pic hov-img0">
-                        <img
-                          src="images/product/tay-trang/2_SimpleMicellar_200ml.webp"
-                          alt="IMG-PRODUCT"
-                        />
-      
-                        <a
-                          href="#"
-                          class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
-                        >
-                          Xem
-                        </a>
-                      </div>
-      
-                      <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l">
-                          <a
-                            href="#product-detail"
-                            class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
-                          >
-                            Nước Tẩy Trang Simple Micellar Cleansing Water 200ml
-                          </a>
-      
-                          <span class="stext-105 cl3">
-                            88,000₫
-                            <del>210,000₫</del>
-                          </span>
-                        </div>
-      
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                          <a
-                            href="#"
-                            class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"
-                          >
-                            <img
-                              class="icon-heart1 dis-block trans-04"
-                              src="images/icons/icon-heart-01.png"
-                              alt="ICON"
-                            />
-                            <img
-                              class="icon-heart2 dis-block trans-04 ab-t-l"
-                              src="images/icons/icon-heart-02.png"
-                              alt="ICON"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-      
-                  <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                    <!-- Block2 -->
-                    <div class="block2">
-                      <div class="block2-pic hov-img0">
-                        <img
-                          src="images/product/sua-rua-mat/6_Senka_xanh100g.webp"
-                          alt="IMG-PRODUCT"
-                        />
-      
-                        <a
-                          href="#"
-                          class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
-                        >
-                          Xem
-                        </a>
-                      </div>
-      
-                      <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l">
-                          <a
-                            href="#product-detail"
-                            class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
-                          >
-                            Sữa Rửa Mặt Senka Xanh Perfect Whip Acne Care 100g
-                          </a>
-      
-                          <span class="stext-105 cl3">
-                            75,000₫
-                            <del class="">105,000₫</del>
-                          </span>
-                        </div>
-      
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                          <a
-                            href="#"
-                            class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"
-                          >
-                            <img
-                              class="icon-heart1 dis-block trans-04"
-                              src="images/icons/icon-heart-01.png"
-                              alt="ICON"
-                            />
-                            <img
-                              class="icon-heart2 dis-block trans-04 ab-t-l"
-                              src="images/icons/icon-heart-02.png"
-                              alt="ICON"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-      
-                  <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                    <!-- Block2 -->
-                    <div class="block2">
-                      <div class="block2-pic hov-img0">
-                        <img
-                          src="images/product/sua-rua-mat/5_Loreal_mauhong50ml.webp"
-                          alt="IMG-PRODUCT"
-                        />
-      
-                        <a
-                          href="#"
-                          class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
-                        >
-                          Xem
-                        </a>
-                      </div>
-      
-                      <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l">
-                          <a
-                            href="#product-detail"
-                            class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
-                          >
-                            Sữa Rửa Mặt Loreal Màu Hồng 50ml Glycolic-Bright Glowing
-                            Daily Cleanser Foam
-                          </a>
-      
-                          <span class="stext-105 cl3"> 150,000₫ </span>
-                        </div>
-      
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                          <a
-                            href="#"
-                            class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"
-                          >
-                            <img
-                              class="icon-heart1 dis-block trans-04"
-                              src="images/icons/icon-heart-01.png"
-                              alt="ICON"
-                            />
-                            <img
-                              class="icon-heart2 dis-block trans-04 ab-t-l"
-                              src="images/icons/icon-heart-02.png"
-                              alt="ICON"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-      
-                  <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                    <!-- Block2 -->
-                    <div class="block2">
-                      <div class="block2-pic hov-img0">
-                        <img
-                          src="images/product/serum/1_TheOrdinaryLactic_30ml.webp"
-                          alt="IMG-PRODUCT"
-                        />
-      
-                        <a
-                          href="#"
-                          class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
-                        >
-                          Xem
-                        </a>
-                      </div>
-      
-                      <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l">
-                          <a
-                            href="#product-detail"
-                            class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
-                          >
-                            Serum The Ordinary Lactic Acid 5 + HA 2% 30ml
-                          </a>
-      
-                          <span class="stext-105 cl3"> 400,000₫ </span>
-                        </div>
-      
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                          <a
-                            href="#"
-                            class="btn-addwish-b2 dis-block pos-relative js-addwish-b2"
-                          >
-                            <img
-                              class="icon-heart1 dis-block trans-04"
-                              src="images/icons/icon-heart-01.png"
-                              alt="ICON"
-                            />
-                            <img
-                              class="icon-heart2 dis-block trans-04 ab-t-l"
-                              src="images/icons/icon-heart-02.png"
-                              alt="ICON"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                 
                 </div>
               </div>
             </div>
           </section>
+
+           <!-- Modal1 -->
+		   <div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+        <div class="overlay-modal1 js-hide-modal1"></div>
+      
+        <div class="container">
+          <div class=" p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+          <button class="how-pos3 hov3 trans-04 js-hide-modal1">
+            <img src="images/icons/icon-close.png" alt="CLOSE" />
+          </button>
+      
+          <div class="row">
+            <div class="col-md-6 col-lg-7 p-b-30">
+            <div class="p-l-25 p-r-30 p-lr-0-lg">
+              <div class="wrap-slick3 flex-sb flex-w">
+              <div class="wrap-slick3-dots"></div>
+              <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+      
+              <div class="slick3 gallery-lb">
+                <div
+                class="item-slick3"
+                data-thumb=" images/product/sua-rua-mat/1_Acnes_CreamyWash100g.webp"
+                >
+                <div class="wrap-pic-w pos-relative">
+                  <img
+                  src=" images/product/sua-rua-mat/1_Acnes_CreamyWash100g.webp"
+                  alt="IMG-PRODUCT"
+                  />
+      
+                  <a
+                  class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+                  href=" images/product/sua-rua-mat/1_Acnes_CreamyWash100g.webp"
+                  >
+                  <i class="fa fa-expand"></i>
+                  </a>
+                </div>
+                </div>
+      
+                <div
+                class="item-slick3"
+                data-thumb="images/product/sua-rua-mat/sp1.jpg"
+                >
+                <div class="wrap-pic-w pos-relative">
+                  <img
+                  src="images/product/sua-rua-mat/sp1.jpg"
+                  alt="IMG-PRODUCT"
+                  />
+      
+                  <a
+                  class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+                  href="images/product/sua-rua-mat/sp1.jpg"
+                  >
+                  <i class="fa fa-expand"></i>
+                  </a>
+                </div>
+                </div>
+      
+                <div
+                class="item-slick3"
+                data-thumb="images/product/sua-rua-mat/sp3.jpg"
+                >
+                <div class="wrap-pic-w pos-relative">
+                  <img
+                  src="images/product/sua-rua-mat/sp3.jpg"
+                  alt="IMG-PRODUCT"
+                  />
+      
+                  <a
+                  class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+                  href="images/product/sua-rua-mat/sp3.jpg"
+                  >
+                  <i class="fa fa-expand"></i>
+                  </a>
+                </div>
+                </div>
+              </div>
+              </div>
+            </div>
+            </div>
+      
+            <div class="col-md-6 col-lg-5 p-b-30">
+            <div class="p-r-50 p-t-5 p-lr-0-lg">
+              <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+              <strong>Sữa Rửa Mặt Acnes Trị Mụn Creamy Wash</strong>
+              </h4>
+      
+              <span class="mtext-106 cl2">
+              <strong> 65.000 ₫ </strong>
+              </span>
+      
+              <div class="rating">
+              <span class="star-rating">
+                <i class="zmdi zmdi-star"></i>
+                <i class="zmdi zmdi-star"></i>
+                <i class="zmdi zmdi-star"></i>
+                <i class="zmdi zmdi-star"></i>
+                <i class="zmdi zmdi-star"></i>
+              </span>
+              <span class="review-count">(257 đánh giá)</span>
+              </div>
+      
+              <p class="stext-102 cl3 p-t-23">
+              Sữa rửa mặt Acnes trị mụn Creamy Wash 100g là kem rửa mặt hàng
+              ngày với công thức đột phá Trio-Activ, giúp rửa sạch bụi bẩn,
+              kháng khuẩn gây mụn tận sâu lỗ chân lông và ngăn ngừa mụn tuổi
+              dậy thì hiệu quả.
+              </p>
+      
+              <!--  -->
+              <div class="p-t-33">
+              <div class="flex-w flex-r-m p-b-10">
+                <div class="size-203 flex-c-m respon6">Dung Tích</div>
+                <div class="size-204 respon6-next">
+                <button class="size-btn">100g</button>
+                <button class="size-btn">68g</button>
+                <button class="size-btn">50g</button>
+                </div>
+              </div>
+      
+      
+                                <div class="flex-w flex-r-m p-b-10">
+                                <div class="size-203 flex-c-m respon6">Số Lượng</div>
+                                <div class="size-204 flex-w flex-m respon6-next">
+                                  <div class="wrap-num-product flex-w m-r-20 m-tb-10">
+                                    <div
+                                        class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m"
+                                    >
+                                      <i class="fs-16 zmdi zmdi-minus"></i>
+                                    </div>
+                
+                                    <input
+                                        class="mtext-104 cl3 txt-center num-product"
+                                        type="number"
+                                        name="num-product"
+                                        value="1"
+                                    />
+                
+                                    <div
+                                        class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m"
+                                    >
+                                      <i class="fs-16 zmdi zmdi-plus"></i>
+                                    </div>
+                                  </div>
+                                  <div class="d-flex">
+                                    <p>Còn lại: <span id="sanPhamSoLuong">20</span></p>
+                                  </div>
+                                </div>
+                              </div>
+                              <p
+                                  id="maxQuantityMessage"
+                                  class="text-danger d-none blink-animation"
+                              >
+                                Số lượng bạn chọn đã đạt đến mức tối đa
+                              </p>
+              <div class="btn-product-detail">
+                <button class="btn btn-add-to-cart js-addcart-detail">
+                Thêm Vào Giỏ Hàng
+                </button>
+                <button class="btn btn-buy-now js-addcart-detail">
+                Mua Ngay
+                <span>Freeship đơn từ 500k</span>
+                </button>
+              </div>
+              </div>
+      
+              <!--  -->
+              <div class="flex-w flex-m p-l-100 p-t-40 respon7">
+              <div class="flex-m bor9 p-r-10 m-r-11">
+                <a
+                href="#"
+                class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
+                data-tooltip="Add to Wishlist"
+                >
+                <i class="zmdi zmdi-favorite"></i>
+                </a>
+              </div>
+      
+              <a
+                href="#"
+                class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+                data-tooltip="Facebook"
+              >
+                <i class="fa fa-facebook"></i>
+              </a>
+      
+              <a
+                href="#"
+                class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+                data-tooltip="Twitter"
+              >
+                <i class="fa fa-twitter"></i>
+              </a>
+      
+              <a
+                href="#"
+                class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+                data-tooltip="Google Plus"
+              >
+                <i class="fa fa-google-plus"></i>
+              </a>
+              </div>
+            </div>
+            </div>
+          </div>
+          </div>
+        </div>
+        </div>
 </div>
+
+<script src="/User/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="/User/vendor/animsition/js/animsition.min.js"></script>
+<script src="/User/vendor/bootstrap/js/popper.js"></script>
+<script src="/User/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/User/vendor/select2/select2.min.js"></script>
+<!-- Các đoạn code jQuery -->
+<script>
+  $(".js-select2").each(function () {
+    $(this).select2({
+      minimumResultsForSearch: 20,
+      dropdownParent: $(this).next(".dropDownSelect2"),
+    });
+  });
+</script>
+<!-- Các file khác -->
+<script src="/User/vendor/daterangepicker/moment.min.js"></script>
+<script src="/User/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="/User/vendor/slick/slick.min.js"></script>
+<script src="/User/js/slick-custom.js"></script>
+<script src="/User/vendor/parallax100/parallax100.js"></script>
+<script>
+  $(".parallax100").parallax100();
+</script>
+<script src="/User/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+<script>
+  $(".gallery-lb").each(function () {
+    $(this).magnificPopup({
+      delegate: "a",
+      type: "image",
+      gallery: { enabled: true },
+      mainClass: "mfp-fade",
+    });
+  });
+</script>
+<script src="/User/vendor/isotope/isotope.pkgd.min.js"></script>
+<script src="/User/vendor/sweetalert/sweetalert.min.js"></script>
+<script>
+  $(".js-addwish-b2").on("click", function (e) {
+    e.preventDefault();
+  });
+
+  $(".js-addwish-b2").each(function () {
+    var nameProduct = $(this).parent().parent().find(".js-name-b2").html();
+    $(this).on("click", function () {
+      swal(nameProduct, "is added to wishlist !", "success");
+
+      $(this).addClass("js-addedwish-b2");
+      $(this).off("click");
+    });
+  });
+
+  $(".js-addwish-detail").each(function () {
+    var nameProduct = $(this)
+      .parent()
+      .parent()
+      .parent()
+      .find(".js-name-detail")
+      .html();
+
+    $(this).on("click", function () {
+      swal(nameProduct, "is added to wishlist !", "success");
+
+      $(this).addClass("js-addedwish-detail");
+      $(this).off("click");
+    });
+  });
+
+  $(".js-addcart-detail").each(function () {
+    var nameProduct = $(this)
+      .parent()
+      .parent()
+      .parent()
+      .parent()
+      .find(".js-name-detail")
+      .html();
+    $(this).on("click", function () {
+      swal(nameProduct, "is added to cart !", "success");
+    });
+  });
+</script>
+<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script>
+  $(".js-pscroll").each(function () {
+    $(this).css("position", "relative");
+    $(this).css("overflow", "hidden");
+    var ps = new PerfectScrollbar(this, {
+      wheelSpeed: 1,
+      scrollingThreshold: 1000,
+      wheelPropagation: false,
+    });
+
+    $(window).on("resize", function () {
+      ps.update();
+    });
+  });
+</script>
+<script src="/User/js/main.js"></script>
+<script src="/User/js/product.js"></script>

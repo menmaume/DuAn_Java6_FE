@@ -130,19 +130,15 @@
     [ Isotope ]*/
     var $topeContainer = $('.isotope-grid');
     var $filter = $('.filter-tope-group');
-
+    
     // filter items on button click
     $filter.each(function () {
-
-        
-
         $filter.on('click', 'button', function () {
             var filterValue = $(this).attr('data-filter');
-            $topeContainer.isotope({filter: filterValue});
+            $topeContainer.isotope({ filter: filterValue });
         });
-        
     });
-
+    
     // init Isotope
     $(window).on('load', function () {
         var $grid = $topeContainer.each(function () {
@@ -150,25 +146,27 @@
                 itemSelector: '.isotope-item',
                 layoutMode: 'fitRows',
                 percentPosition: true,
-                animationEngine : 'best-available',
+                animationEngine: 'best-available',
                 masonry: {
                     columnWidth: '.isotope-item'
                 }
             });
         });
     });
-
+    
     var isotopeButton = $('.filter-tope-group button');
-
+    
     $(isotopeButton).each(function(){
         $(this).on('click', function(){
-            for(var i=0; i<isotopeButton.length; i++) {
+            for(var i = 0; i < isotopeButton.length; i++) {
                 $(isotopeButton[i]).removeClass('how-active1');
             }
-
+            
             $(this).addClass('how-active1');
         });
     });
+    console.log(isotopeButton.length);
+    
 
     /*==================================================================
     [ Filter / Search product ]*/
@@ -217,12 +215,55 @@
 
     /*==================================================================
     [ +/- num product ]*/
+    // $(document).ready(function() {
+    //     var maxQuantity = 20; // Số lượng tối đa mặc định
+    //     var $maxQuantityMessage = $('#maxQuantityMessage');
+    //     var $numProductInput = $('.num-product');
+    
+    //     function updateQuantity() {
+    //         var numProduct = Number($numProductInput.val());
+    //         if (numProduct > maxQuantity) {
+    //             $numProductInput.val(maxQuantity);
+    //             $maxQuantityMessage.removeClass('d-none');
+    //         } else if (numProduct <= 0) {
+    //             $numProductInput.val(1);
+    //         } else {
+    //             $maxQuantityMessage.addClass('d-none');
+    //         }
+    //     }
+    
+    //     $('.btn-num-product-down').on('click', function() {
+    //         var $input = $(this).next();
+    //         var numProduct = Number($input.val());
+    //         if (numProduct > 1) {
+    //             $input.val(numProduct - 1);
+    //             updateQuantity(); // Cập nhật thông báo khi giảm
+    //         }
+    //     });
+    
+    //     $('.btn-num-product-up').on('click', function() {
+    //         var $input = $(this).prev();
+    //         var numProduct = Number($input.val());
+    //         if (numProduct < maxQuantity) {
+    //             $input.val(numProduct + 1);
+    //             updateQuantity(); // Cập nhật thông báo khi tăng
+    //         } else {
+    //             $maxQuantityMessage.removeClass('d-none'); // Hiển thị thông báo khi đạt tối đa
+    //         }
+    //     });
+    
+    //     // Xử lý khi người dùng thay đổi giá trị trong input
+    //     $numProductInput.on('input', function() {
+    //         updateQuantity();
+    //     });
+    // });
+    
+    
     $(document).ready(function() {
-        var maxQuantity = 20; // Số lượng tối đa mặc định
         var $maxQuantityMessage = $('#maxQuantityMessage');
         var $numProductInput = $('.num-product');
-    
-        function updateQuantity() {
+        
+        function updateQuantity(maxQuantity) {
             var numProduct = Number($numProductInput.val());
             if (numProduct > maxQuantity) {
                 $numProductInput.val(maxQuantity);
@@ -233,33 +274,35 @@
                 $maxQuantityMessage.addClass('d-none');
             }
         }
-    
+
         $('.btn-num-product-down').on('click', function() {
             var $input = $(this).next();
             var numProduct = Number($input.val());
+            var maxQuantity = Number($('#sanPhamSoLuong').text().trim());
             if (numProduct > 1) {
                 $input.val(numProduct - 1);
-                updateQuantity(); // Cập nhật thông báo khi giảm
+                updateQuantity(maxQuantity); // Cập nhật thông báo khi giảm
             }
         });
-    
+
         $('.btn-num-product-up').on('click', function() {
             var $input = $(this).prev();
             var numProduct = Number($input.val());
+            var maxQuantity = Number($('#sanPhamSoLuong').text().trim());
             if (numProduct < maxQuantity) {
                 $input.val(numProduct + 1);
-                updateQuantity(); // Cập nhật thông báo khi tăng
+                updateQuantity(maxQuantity); // Cập nhật thông báo khi tăng
             } else {
                 $maxQuantityMessage.removeClass('d-none'); // Hiển thị thông báo khi đạt tối đa
             }
         });
-    
+
         // Xử lý khi người dùng thay đổi giá trị trong input
         $numProductInput.on('input', function() {
-            updateQuantity();
+            var maxQuantity = Number($('#sanPhamSoLuong').text().trim());
+            updateQuantity(maxQuantity);
         });
     });
-    
     
 
     /*==================================================================
@@ -314,6 +357,38 @@
     $('.js-hide-modal1').on('click',function(){
         $('.js-modal1').removeClass('show-modal1');
     });
+
+
+    $(document).ready(function(){
+        // Show modal when the corresponding button is clicked
+        $('.js-show-modal').on('click', function(e){
+            e.preventDefault();
+            var maSP = $(this).data('maSP'); // Lấy ID sản phẩm
+            $('.js-modal[data-maSP="' + maSP + '"]').addClass('show-modal'); // Hiển thị modal tương ứng
+        });
+    
+        // Hide modal when the corresponding overlay or close button is clicked
+        $('.js-hide-modal').on('click', function(){
+            var maSP = $(this).data('maSP'); // Lấy ID sản phẩm
+            $('.js-modal[data-maSP="' + maSP + '"]').removeClass('show-modal'); // Ẩn modal tương ứng
+        });
+    });
+    
+
+    // $(document).ready(function(){
+    //     // Show modal for specific product
+    //     $('.js-show-modal').on('click', function(e){
+    //         e.preventDefault();
+    //         var productId = $(this).data('product-id'); // Lấy ID sản phẩm
+    //         $('.modal-' + productId).addClass('show-modal'); // Hiển thị modal tương ứng
+    //     });
+    
+    //     // Hide modal for specific product
+    //     $('.js-hide-modal').on('click', function(){
+    //         var productId = $(this).data('product-id'); // Lấy ID sản phẩm
+    //         $('.modal-' + productId).removeClass('show-modal'); // Ẩn modal tương ứng
+    //     });
+    // });
 
 
 
