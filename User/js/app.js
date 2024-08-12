@@ -351,6 +351,10 @@ app.controller(
   }
 );
 
-app.controller("profileCtrl", function ($scope, $rootScope, $http) {});
+app.controller("profileCtrl", function($scope, SharedService) {
+  $scope.token = SharedService.getData();
+
+  console.log($scope.token)
+});
 
 app.controller("cartCtrl", function ($scope, $rootScope, $http) {});
