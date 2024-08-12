@@ -59,7 +59,6 @@ app.config(function ($routeProvider) {
       templateUrl: "/notfound.html",
     });
 });
-
 app.controller("homeCtrl", function ($scope, $rootScope, $http, $location) {
   $scope.sanpham = [];
   $scope.loaisp = [];
@@ -73,6 +72,7 @@ app.controller("homeCtrl", function ($scope, $rootScope, $http, $location) {
     function successCallback(response) {
       $scope.sanpham = response.data;
       console.log(response.data);
+      
     },
     function errorCallback(response) {
       // called asynchronously if an error occurs
@@ -240,7 +240,6 @@ app.controller(
   "productDetailCtrl",
   function ($scope, $http, $routeParams, $location) {
     // Thêm $location vào đây
-
     var productId = $routeParams.id;
 
     $http({
@@ -287,143 +286,336 @@ app.controller(
     };
 
     $scope.soLuong = document.querySelector('input[name="num-product"]').value;
-    $scope.themVaoGioHang = function (productId, quantity) {
-      var productIdLong = parseInt(productId, 10);
+    // $scope.themVaoGioHang = function (productId, quantity) {
+    //   var productIdLong = parseInt(productId, 10);
+    //   $http({
+    //     method: "POST",
+    //     url:
+    //       API_URL +
+    //       "giohang/add?productId=" +
+    //       productIdLong +
+    //       "&quantity=" +
+    //       quantity,
+    //     withCredentials: true
+    //   }).then(
+    //     function successCallback(response) {
+    //       $scope.thongbao = response.data;
+    //       alert($scope.thongbao.message);
+
+    //       // Sau khi thêm sản phẩm vào giỏ hàng, gọi API để lấy lại danh sách giỏ hàng
+    //       $scope.getGioHang();
+    //     },
+    //     function errorCallback(response) {
+    //       console.log(
+    //         API_URL +
+    //           "giohang/add?productId=" +
+    //           productIdLong +
+    //           "&quantity=" +
+    //           quantity
+    //       );
+    //       console.error(response.data);
+    //       alert("Lỗi khi tải chi tiết sản phẩm");
+    //     }
+    //   );
+    // };
+
+    // Hàm để lấy danh sách giỏ hàng
+    $scope.cart = getCartFromLocalStorage();
+
+    $scope.addToCart = function(productId, quantityStr) {
+      // Lấy giỏ hàng hiện tại từ localStorage
+
+      let quantity = parseInt(quantityStr, 10);
+
+      let cart = getCartFromLocalStorage();
+  
+      // Gọi API để lấy thông tin sản phẩm
       $http({
-        method: "POST",
-        url:
-          API_URL +
-          "giohang/add?productId=" +
-          productIdLong +
-          "&quantity=" +
-          quantity,
-        withCredentials: true
+          method: "GET",
+          url: API_URL + "ctsp/" + productId,
       }).then(
-        function successCallback(response) {
-          $scope.thongbao = response.data;
-          alert($scope.thongbao.message);
-
-          // Sau khi thêm sản phẩm vào giỏ hàng, gọi API để lấy lại danh sách giỏ hàng
-          $scope.getGioHang();
-        },
-        function errorCallback(response) {
-          console.log(
-            API_URL +
-              "giohang/add?productId=" +
-              productIdLong +
-              "&quantity=" +
-              quantity
-          );
-          console.error(response.data);
-          alert("Lỗi khi tải chi tiết sản phẩm");
-        }
+          function successCallback(response) {
+              let product = response.data;
+  
+              if (!product) {
+                  console.error('Product not found');
+                  return;
+              }
+  
+              // Cập nhật giỏ hàng
+              if (cart[productId]) {
+                  cart[productId].quantity += quantity;
+              } else {
+                  cart[productId] = {
+                      product: product,
+                      quantity: quantity
+                  };
+              }
+  
+              // Lưu lại giỏ hàng vào localStorage
+              saveCartToLocalStorage(cart);
+  
+              // Cập nhật biến $scope.cart
+              $scope.cart = cart;
+          },
+          function errorCallback(response) {
+              console.error('Error fetching product:', response);
+          }
       );
-    };
+  };
+    function getCartFromLocalStorage() {
+      let cart = localStorage.getItem('cart');
+      return cart ? JSON.parse(cart) : {};
+  }
 
-    // Hàm để lấy danh sách người dùng
-    $scope.getGioHang = function () {
-      $http({
+
+  
+
+  function saveCartToLocalStorage(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  function getProductById(productId) {
+      // Hàm giả lập để lấy sản phẩm theo ID, bạn cần thay thế bằng dịch vụ thực tế của bạn
+      // Ví dụ:
+      return $http({
         method: "GET",
-        url: API_URL + 'taikhoan',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        withCredentials: true
-      }).then(
-        function successCallback(response) {
-          $scope.giohang = response.data;
-          console.log("User:", response.data);
-        },
-        function errorCallback(response) {
-          console.error("Error:", response);
-          alert("Lỗi khi tải ");
-        }
-      );
-    };
+        url: API_URL + "ctsp/" + productId
+    }).then(function successCallback(response) {
+        // Trả về dữ liệu sản phẩm
+        //console.log('Mã SP:', response.data.maSP);
+        return response.data;
+        
+    }, function errorCallback(response) {
+        // Xử lý lỗi nếu có lỗi xảy ra
+        console.error(response);
+        alert("Lỗi khi lấy thông tin sản phẩm");
+        // Trả về lỗi nếu cần
+        throw response;
+    });
+  }
 
-    $scope.getTotalPrice = function () {
-      var total = 0;
-      angular.forEach($scope.giohang, function (item) {
-        total += item.sp.gia * item.soluong;
-      });
-      return total;
-    };
+  
+    // $scope.getGioHang = function () {
+    //   $http({
+    //     method: "GET",
+    //     url: API_URL + 'giohang/getcart',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     withCredentials: true
+    //   }).then(
+    //     function successCallback(response) {
+    //       $scope.giohang = response.data;
+    //       console.log("Cart data received:", response.data);
+    //     },
+    //     function errorCallback(response) {
+    //       console.error("Error fetching cart:", response);
+    //       alert("Lỗi khi tải giỏ hàng");
+    //     }
+    //   );
+    // };
+
+    // $scope.getTotalPrice = function () {
+    //   var total = 0;
+    //   angular.forEach($scope.giohang, function (item) {
+    //     total += item.sp.gia * item.soluong;
+    //   });
+    //   return total;
+    // };
   }
 );
 
-app.controller("profileCtrl", function($scope,$http) {
-  var token = getCookie('token')
-  var username = getCookie('username')
-  // console.log(token)
+app.controller("profileCtrl", function ($scope, $rootScope, $http) {});
 
-  $scope.TaiKhoan = [];
-  $scope.newTaiKhoan = {};
+// app.controller("cartCtrl", function ($scope, $rootScope, $http) {
 
-  // Load products from the API
-  $http({
-    method: "GET",
-    url: "http://localhost:8080/api/taikhoan/"+username,
-  }).then(
-    function successCallback(response) {
-      //console.log(url)
-      $scope.TaiKhoan = response.data;
-      console.log(response.data);
-    },
-    function errorCallback(response) {
-      console.error("Error :", response);
-    }
-  );
 
-  // Edit 
-  //$scope.selectedTaiKhoan = angular.copy(tk); // Lưu 
-  $scope.newTaiKhoan = angular.copy(tk); // Đổ dữ liệu lên form
-   
-   
+//   $scope.cart = getCartFromLocalStorage();
+//   function getCartFromLocalStorage() {
+//     let cart = localStorage.getItem('cart');
+//     console.log(cart);
+//     return cart ? JSON.parse(cart) : {};
+// }
 
-  // // Update 
-  // $scope.updateTaiKhoan = function () {
-  //   if (!$scope.selectedTaiKhoan || !$scope.newTaiKhoan.id_taiKhoan) {
-  //     showToast('errorToast');
-  //     return;
-  //   }
+// //-----------------------------------------Xóa sản phẩm khỏi giỏ hàng-----------------------------------------------
+// $scope.removeFromCart = function(productId) {
+//   $scope.cart = $scope.cart.filter(item => item.id !== productId);
+//   saveCartToLocalStorage($scope.cart);
+// };
 
-  //   var data = $scope.newTaiKhoan;
+// // Tăng số lượng sản phẩm
+// $scope.increase = function(item) {
+//   if (item.quantity < item.maxQuantity) {
+//       item.quantity++;
+//       saveCartToLocalStorage($scope.cart);
+//   } else {
+//       showToast('Số lượng tối đa đã đạt.');
+//   }
+// };
 
-  //   $http.put(API_URL + "TaiKhoan/" + $scope.selectedTaiKhoan.id_taiKhoan, data).then(
-  //     function successCallback(response) {
-  //       showToast('successToast');
-  //       const index = $scope.taiKhoan.findIndex(tk => tk.id_taiKhoan === $scope.selectedTaiKhoan.id_taiKhoan);
-  //       if (index !== -1) {
-  //         $scope.taiKhoan[index] = response.data;
-  //       }
-  //       $scope.newTaiKhoan = {}; // Xóa form sau khi cập nhật
-  //       $scope.selectedTaiKhoan = null; // Reset 
-  //     },
-  //     function errorCallback(response) {
-  //       showToast('errorToast');
-  //     }
-  //   );
-  // };
+// // --------------------------------------Giảm số lượng sản phẩm--------------------------------------------------
+// $scope.decrease = function(item) {
+//   if (item.quantity > 1) {
+//       item.quantity--;
+//       saveCartToLocalStorage($scope.cart);
+//   }
+// };
 
-});
+//   // Tính tổng giá
+//   $scope.getTotalPrice = function() {
+//     return $scope.cart.reduce((total, item) => total + (item.product.gia * item.quantity), 0);
+// };
 
-app.controller("cartCtrl", function ($scope, $rootScope, $http) {});
+// // Hiển thị thông báo toast
+// function showToast(message) {
+//     var toast = document.createElement('div');
+//     toast.className = 'toast';
+//     toast.innerText = message;
+//     document.body.appendChild(toast);
+//     $timeout(function() {
+//         document.body.removeChild(toast);
+//     }, 3000);
+// }
 
-function getCookie(cookieName) {
-  // Lấy toàn bộ chuỗi cookie từ document.cookie
-  var cookies = document.cookie.split(";");
+// $scope.removeFromCart = function(productId) {
+//   // Cập nhật giỏ hàng trên giao diện người dùng
+//   $scope.cart = $scope.cart.filter(item => item.product.id !== productId);
+//   // Cập nhật localStorage
+//   saveCartToLocalStorage($scope.cart);
+//   // Cập nhật lại giỏ hàng trên giao diện
+//   $scope.$apply(); // Đảm bảo rằng AngularJS cập nhật giao diện
+// };
 
-  // Duyệt qua từng cookie và tìm cookie có tên phù hợp
-  for (var i = 0; i < cookies.length; i++) {
-    var cookie = cookies[i].trim();
+// });
 
-    // Nếu cookie bắt đầu bằng tên được tìm kiếm
-    if (cookie.indexOf(cookieName + "=") === 0) {
-      // Trả về giá trị của cookie
-      return cookie.substring(cookieName.length + 1, cookie.length);
+app.controller('cartCtrl', function($scope, $rootScope, $http, $timeout) {
+
+  // Lấy giỏ hàng từ localStorage
+  function getCartFromLocalStorage() {
+    let cart = localStorage.getItem('cart');
+    try {
+        let parsedCart = JSON.parse(cart);
+        // Kiểm tra nếu dữ liệu là đối tượng
+        if (typeof parsedCart === 'object' && !Array.isArray(parsedCart)) {
+            return parsedCart;
+        } else {
+            console.error("Dữ liệu giỏ hàng không phải là đối tượng");
+            return {}; // Trả về đối tượng rỗng nếu dữ liệu không phải là đối tượng
+        }
+    } catch (e) {
+        console.error("Lỗi khi phân tích dữ liệu giỏ hàng", e);
+        return {}; // Trả về đối tượng rỗng nếu có lỗi khi phân tích
     }
   }
 
-  // Nếu không tìm thấy cookie, trả về chuỗi rỗng
-  return "";
+  // Lưu giỏ hàng vào localStorage
+  function saveCartToLocalStorage(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  // Khởi tạo giỏ hàng từ localStorage
+  $scope.cart = getCartFromLocalStorage();
+
+  // Xóa sản phẩm khỏi giỏ hàng
+  $scope.removeFromCart = function(productId) {
+    // Xóa đối tượng với productId từ đối tượng cart
+    if ($scope.cart && typeof $scope.cart === 'object') {
+      delete $scope.cart[productId];
+      saveCartToLocalStorage($scope.cart); // Lưu dữ liệu đã cập nhật vào localStorage
+  } else {
+      console.error("Dữ liệu giỏ hàng không phải là đối tượng");
+  }
+};
+  // Tăng số lượng sản phẩm
+  $scope.increase = function(item) {
+      if (item.quantity < item.product.soluong) {  // Đảm bảo rằng bạn đã có `maxQuantity` trong dữ liệu sản phẩm
+          item.quantity++;
+          saveCartToLocalStorage($scope.cart);
+      } else {
+          showToast('Số lượng sản phẩm đã đạt đến mức tối đa!');
+      }
+  };
+
+  // Giảm số lượng sản phẩm
+  $scope.decrease = function(item) {
+      if (item.quantity > 1) {  // Đảm bảo rằng số lượng không giảm dưới 1
+          item.quantity--;
+          saveCartToLocalStorage($scope.cart);
+      }
+  };
+
+   // Hàm xử lý thay đổi số lượng từ ô input
+   $scope.updateQuantity = function(item) {
+        let inputQuantity = parseInt(item.quantity, 10); // Chuyển đổi thành số nguyên
+        
+        // Kiểm tra và cập nhật số lượng
+        if (isNaN(inputQuantity)) {
+            item.quantity = 1; // Đặt lại về 1 nếu không phải là số
+            showToast('Số lượng không hợp lệ.');
+        } else if (inputQuantity > item.product.soluong) {
+            item.quantity = item.product.soluong;
+            showToast('Số lượng tối đa đã đạt.');
+        } else if (inputQuantity < 1) {
+            item.quantity = 1;
+            showToast('Số lượng tối thiểu là 1.');
+        } else {
+            item.quantity = inputQuantity;
+        }
+
+        // Cập nhật giỏ hàng trong localStorage
+        saveCartToLocalStorage($scope.cart);
+    };
+
+  // Tính tổng giá
+  $scope.getTotalPrice = function() {
+    return Object.values($scope.cart).reduce((total, item) => total + (item.product.gia * item.quantity), 0);
+};
+
+  // Hiển thị thông báo toast
+  function showToast(message) {
+    // Tạo phần tử toast
+    var toast = document.createElement('div');
+    toast.className = 'toast';
+
+    // Tạo nội dung của toast
+    var text = document.createElement('span');
+    text.innerText = message;
+    toast.appendChild(text);
+
+    // Tạo nút đóng
+    var closeBtn = document.createElement('button');
+    closeBtn.className = 'close';
+    closeBtn.innerText = '×';  // Ký tự dấu x
+    closeBtn.onclick = function() {
+        document.body.removeChild(toast);
+    };
+    toast.appendChild(closeBtn);
+
+    // Tạo thanh tiến trình
+    var progressBar = document.createElement('div');
+    progressBar.className = 'progress-bar';
+    toast.appendChild(progressBar);
+
+    // Thêm toast vào body
+    document.body.appendChild(toast);
+
+    // Cập nhật thanh tiến trình
+    progressBar.style.width = '100%'; // Bắt đầu từ 100%
+    setTimeout(function() {
+        progressBar.style.width = '0%'; // Hoàn tất
+        // Loại bỏ toast sau khi thanh tiến trình kết thúc
+        setTimeout(function() {
+            if (document.body.contains(toast)) {
+                document.body.removeChild(toast);
+            }
+        }, 2000); // Thời gian thêm để đảm bảo hoạt ảnh hoàn tất
+    }, 0); // Bắt đầu ngay lập tức
+
+    // Xóa toast khi nhấn nút đóng
+    closeBtn.onclick = function() {
+        document.body.removeChild(toast);
+    };
 }
+
+});
