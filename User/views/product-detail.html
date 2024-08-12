@@ -139,6 +139,7 @@
                               type="number"
                               name="num-product"
                               value="1"
+                              ng-model="soLuong"
                             />
       
                             <div
@@ -159,7 +160,7 @@
                         Số lượng bạn chọn đã đạt đến mức tối đa
                       </p>
                       <div class="btn-product-detail">
-                        <button class="btn btn-add-to-cart js-addcart-detail">
+                        <button ng-click="themVaoGioHang(productDetail.maCTSP, 1)" class="btn btn-add-to-cart js-addcart-detail">
                           Thêm Vào Giỏ Hàng
                         </button>
                         <button class="btn btn-buy-now js-addcart-detail">

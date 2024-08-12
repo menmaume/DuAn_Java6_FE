@@ -109,20 +109,20 @@ app.controller("homeCtrl", function ($scope, $rootScope, $http, $location) {
   $scope.btnXemChiTiet = function (Id) {
     $http({
       method: "GET",
-      url: API_URL + 'ctsp/' + Id,
+      url: API_URL + "ctsp/" + Id,
     }).then(
       function successCallback(response) {
         $scope.ctsp_id = response.data;
         // Chuyển đến trang chi tiết sản phẩm
-        $location.path('/product-detail/' + Id);
-    },
-    function errorCallback(response) {
+        $location.path("/product-detail/" + Id);
+      },
+      function errorCallback(response) {
         // Xử lý lỗi nếu có lỗi xảy ra trong quá trình xóa tài nguyên
         console.error(response.errorCallback);
         alert("Lỗi khi tải chi tiết sản phẩm");
-    }
+      }
     );
-  }
+  };
 });
 
 app.controller("aboutCtrl", function ($scope, $rootScope, $http) {});
@@ -139,151 +139,217 @@ app.controller("orderCtrl", function ($scope, $rootScope, $http) {});
 
 app.controller("paymentCtrl", function ($scope, $rootScope, $http) {});
 
-app.controller("productCtrl", function ($scope, $rootScope, $http, $routeParams, $location) {
-
-//--------------------Lấy danh sách sản phẩm----------------------------------------
-  $http({
-    method: "GET",
-    url: API_URL + "ctsp",
-  }).then(
-    function successCallback(response) {
-      $scope.ctsp = response.data;
-    },
-    function errorCallback(response) {
-      console.error("Error:", response.status, response.statusText);
-      console.log("Response Data:", response.data); // In ra dữ liệu trả về từ server (nếu có)
-    }
-  );
-
-//-----------------Lấy danh sách thương hiệu--------------------------------------------
-  $http({
-    method: "GET",
-    url: API_URL + "thuonghieu",
-  }).then(
-    function successCallback(response) {
-      $scope.thuonghieu = response.data;
-    },
-    function errorCallback(response) {
-      console.log("Response Data:", response.data); // In ra dữ liệu trả về từ server (nếu có)
-    }
-  );
-
-  //----------------- Hàm tự động sinh màu----------------------------------------------
-  $scope.getColor = function(index) {
-    var hue = (index * 360 / $scope.thuonghieu.length) % 360;  // Chia đều các màu theo dải màu sắc HSL
-    return 'hsl(' + hue + ', 70%, 50%)';  // Tạo màu với độ bão hòa 70% và độ sáng 50%
-  };
-
-//--------------------Xem chi tiết sản phẩm---------------------------------------------
-  $scope.btnXemChiTiet = function (Id) {
+app.controller(
+  "productCtrl",
+  function ($scope, $rootScope, $http, $routeParams, $location) {
+    //--------------------Lấy danh sách sản phẩm----------------------------------------
     $http({
       method: "GET",
-      url: API_URL + 'ctsp/' + Id,
+      url: API_URL + "ctsp",
     }).then(
       function successCallback(response) {
-        $scope.ctsp_id = response.data;
-        // Chuyển đến trang chi tiết sản phẩm
-        $location.path('/product-detail/' + Id);
+        $scope.ctsp = response.data;
       },
       function errorCallback(response) {
-        // Xử lý lỗi nếu có lỗi xảy ra trong quá trình lấy tài nguyên
-        console.error(response);
-        alert("Lỗi khi tải chi tiết sản phẩm");
+        console.error("Error:", response.status, response.statusText);
+        console.log("Response Data:", response.data); // In ra dữ liệu trả về từ server (nếu có)
       }
     );
-  };
 
-//-------------------Hàm lấy danh sách Danh mục--------------------------------------
-  $http({
-    method: "GET",
-    url: API_URL + "danhmuc",
-  }).then(
-    function successCallback(response) {
-      $scope.danhmuc = response.data;
-    },
-    function errorCallback(response) {
-      console.log("Response Data:", response.data); // In ra dữ liệu trả về từ server (nếu có)
-    }
-  );
+    //-----------------Lấy danh sách thương hiệu--------------------------------------------
+    $http({
+      method: "GET",
+      url: API_URL + "thuonghieu",
+    }).then(
+      function successCallback(response) {
+        $scope.thuonghieu = response.data;
+      },
+      function errorCallback(response) {
+        console.log("Response Data:", response.data); // In ra dữ liệu trả về từ server (nếu có)
+      }
+    );
 
-//-------------------Hàm lấy chi tiết danh mục---------------------------------------
-  $http({
-    method: "GET",
-    url: API_URL + "danhmucct",
-  }).then(
-    function successCallback(response) {
-      $scope.danhmucct = response.data;
-      // Khởi tạo mảng để lưu các mã loại sản phẩm
-      $scope.loaisp = [];
+    //----------------- Hàm tự động sinh màu----------------------------------------------
+    $scope.getColor = function (index) {
+      var hue = ((index * 360) / $scope.thuonghieu.length) % 360; // Chia đều các màu theo dải màu sắc HSL
+      return "hsl(" + hue + ", 70%, 50%)"; // Tạo màu với độ bão hòa 70% và độ sáng 50%
+    };
 
-      // Lặp qua từng danh mục chi tiết
-      angular.forEach($scope.danhmucct, function(danhMucCT) {
+    //--------------------Xem chi tiết sản phẩm---------------------------------------------
+    $scope.btnXemChiTiet = function (Id) {
+      $http({
+        method: "GET",
+        url: API_URL + "ctsp/" + Id,
+      }).then(
+        function successCallback(response) {
+          $scope.ctsp_id = response.data;
+          // Chuyển đến trang chi tiết sản phẩm
+          $location.path("/product-detail/" + Id);
+        },
+        function errorCallback(response) {
+          // Xử lý lỗi nếu có lỗi xảy ra trong quá trình lấy tài nguyên
+          console.error(response);
+          alert("Lỗi khi tải chi tiết sản phẩm");
+        }
+      );
+    };
+
+    //-------------------Hàm lấy danh sách Danh mục--------------------------------------
+    $http({
+      method: "GET",
+      url: API_URL + "danhmuc",
+    }).then(
+      function successCallback(response) {
+        $scope.danhmuc = response.data;
+      },
+      function errorCallback(response) {
+        console.log("Response Data:", response.data); // In ra dữ liệu trả về từ server (nếu có)
+      }
+    );
+
+    //-------------------Hàm lấy chi tiết danh mục---------------------------------------
+    $http({
+      method: "GET",
+      url: API_URL + "danhmucct",
+    }).then(
+      function successCallback(response) {
+        $scope.danhmucct = response.data;
+        // Khởi tạo mảng để lưu các mã loại sản phẩm
+        $scope.loaisp = [];
+
+        // Lặp qua từng danh mục chi tiết
+        angular.forEach($scope.danhmucct, function (danhMucCT) {
           // Lặp qua từng loại sản phẩm trong danh mục chi tiết
-          angular.forEach(danhMucCT.loaiSanPham, function(loaiSP) {
-              // Lưu mã loại sản phẩm vào mảng
-              $scope.loaisp.push(loaiSP.loaiSanPham);
+          angular.forEach(danhMucCT.loaiSanPham, function (loaiSP) {
+            // Lưu mã loại sản phẩm vào mảng
+            $scope.loaisp.push(loaiSP.loaiSanPham);
           });
-      });
-      console.log('Loại sản phẩm:' + $scope.loaisp)
-    },
-    function errorCallback(response) {
-      console.log("Response Data:", response.data); // In ra dữ liệu trả về từ server (nếu có)
-    }
-  );
-
-
-//---------------------Hàm lấy loại sản phẩm--------------------------------------------
-
-
-});
-
-app.controller('productDetailCtrl', function ($scope, $http, $routeParams, $location) { // Thêm $location vào đây
-  
-  var productId = $routeParams.id;
-
-  $http({
-    method: "GET",
-    url: API_URL + 'ctsp/' + productId
-  }).then(
-    function successCallback(response) {
-      $scope.productDetail = response.data;
-    },
-    function errorCallback(response) {
-      alert("Lỗi khi tải chi tiết sản phẩm");
-    }
-  );
-
-  $http({
-    method: "GET",
-    url: API_URL + "ctsp",
-  }).then(
-    function successCallback(response) {
-      $scope.ctsp = response.data;
-    },
-    function errorCallback(response) {
-      console.error("Error:", response.status, response.statusText);
-      console.log("Response Data:", response.data); // In ra dữ liệu trả về từ server (nếu có)
-    }
-  );
-  
-  $scope.btnXemChiTiet = function (Id) {
-    $http({
-      method: "GET",
-      url: API_URL + 'ctsp/' + Id,
-    }).then(
-      function successCallback(response) {
-        $scope.ctsp_id = response.data;
-        // Chuyển đến trang chi tiết sản phẩm
-        $location.path('/product-detail/' + Id);
+        });
+        
       },
       function errorCallback(response) {
-        // Xử lý lỗi nếu có lỗi xảy ra trong quá trình lấy tài nguyên
-        console.error(response);
+        console.log("Response Data:", response.data); // In ra dữ liệu trả về từ server (nếu có)
+      }
+    );
+
+    //---------------------Hàm lấy loại sản phẩm--------------------------------------------
+  }
+);
+
+app.controller(
+  "productDetailCtrl",
+  function ($scope, $http, $routeParams, $location) {
+    // Thêm $location vào đây
+
+    var productId = $routeParams.id;
+
+    $http({
+      method: "GET",
+      url: API_URL + "ctsp/" + productId,
+    }).then(
+      function successCallback(response) {
+        $scope.productDetail = response.data;
+      },
+      function errorCallback(response) {
         alert("Lỗi khi tải chi tiết sản phẩm");
       }
     );
-  };
-});
+
+    $http({
+      method: "GET",
+      url: API_URL + "ctsp",
+    }).then(
+      function successCallback(response) {
+        $scope.ctsp = response.data;
+      },
+      function errorCallback(response) {
+        console.error("Error:", response.status, response.statusText);
+        console.log("Response Data:", response.data); // In ra dữ liệu trả về từ server (nếu có)
+      }
+    );
+
+    $scope.btnXemChiTiet = function (Id) {
+      $http({
+        method: "GET",
+        url: API_URL + "ctsp/" + Id,
+      }).then(
+        function successCallback(response) {
+          $scope.ctsp_id = response.data;
+          // Chuyển đến trang chi tiết sản phẩm
+          $location.path("/product-detail/" + Id);
+        },
+        function errorCallback(response) {
+          // Xử lý lỗi nếu có lỗi xảy ra trong quá trình lấy tài nguyên
+          console.error(response);
+          alert("Lỗi khi tải chi tiết sản phẩm");
+        }
+      );
+    };
+
+    $scope.soLuong = document.querySelector('input[name="num-product"]').value;
+    $scope.themVaoGioHang = function (productId, quantity) {
+      var productIdLong = parseInt(productId, 10);
+      $http({
+        method: "POST",
+        url:
+          API_URL +
+          "giohang/add?productId=" +
+          productIdLong +
+          "&quantity=" +
+          quantity,
+        withCredentials: true
+      }).then(
+        function successCallback(response) {
+          $scope.thongbao = response.data;
+          alert($scope.thongbao.message);
+
+          // Sau khi thêm sản phẩm vào giỏ hàng, gọi API để lấy lại danh sách giỏ hàng
+          $scope.getGioHang();
+        },
+        function errorCallback(response) {
+          console.log(
+            API_URL +
+              "giohang/add?productId=" +
+              productIdLong +
+              "&quantity=" +
+              quantity
+          );
+          console.error(response.data);
+          alert("Lỗi khi tải chi tiết sản phẩm");
+        }
+      );
+    };
+
+    // Hàm để lấy danh sách giỏ hàng
+    $scope.getGioHang = function () {
+      $http({
+        method: "GET",
+        url: API_URL + 'giohang/getcart',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        withCredentials: true
+      }).then(
+        function successCallback(response) {
+          $scope.giohang = response.data;
+          console.log("Cart data received:", response.data);
+        },
+        function errorCallback(response) {
+          console.error("Error fetching cart:", response);
+          alert("Lỗi khi tải giỏ hàng");
+        }
+      );
+    };
+
+    $scope.getTotalPrice = function () {
+      var total = 0;
+      angular.forEach($scope.giohang, function (item) {
+        total += item.sp.gia * item.soluong;
+      });
+      return total;
+    };
+  }
+);
 
 app.controller("profileCtrl", function ($scope, $rootScope, $http) {});
 

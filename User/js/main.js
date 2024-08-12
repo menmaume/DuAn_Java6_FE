@@ -260,6 +260,8 @@
     
     
     $(document).ready(function() {
+        
+        
         var $maxQuantityMessage = $('#maxQuantityMessage');
         var $numProductInput = $('.num-product');
         
@@ -302,6 +304,8 @@
             var maxQuantity = Number($('#sanPhamSoLuong').text().trim());
             updateQuantity(maxQuantity);
         });
+
+        
     });
     
 

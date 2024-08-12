@@ -28,103 +28,43 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr class="table_row">
+                          <tr ng-repeat="gh in giohang" class="table_row">
                             <td class="col-lg-1">
                               <div class="how-itemcart1">
-                                <img
-                                  src="images/product/sua-rua-mat/7_simple150ml.webp"
-                                  alt="IMG"
-                                />
+                                <img ng-src="images/product/{{gh.sp.hinh[0].img}}" alt="IMG" />
                               </div>
                             </td>
-                            <td class="col-lg-4">Sữa rửa mặt simple 150ml</td>
-                            <td class="col-lg-2">119.000đ</td>
+                            <td class="col-lg-4">{{gh.sp.tenSP}}</td>
+                            <td class="col-lg-2">{{gh.sp.gia}}đ</td>
                             <td class="col-lg-3">
-                              <div
-                                class="wrap-num-product flex-w justify-content-between align-items-center"
-                              >
-                                <div
-                                  class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m"
-                                >
+                              <div class="wrap-num-product flex-w justify-content-between align-items-center">
+                                <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                                   <i class="fs-16 zmdi zmdi-minus"></i>
                                 </div>
                                 <input
                                   class="mtext-104 cl3 txt-center num-product"
                                   type="number"
-                                  name="num-product1"
-                                  value="1"
+                                  name="num-product"
+                                  ng-model="gh.soluong"
                                 />
-                                <div
-                                  class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m"
-                                >
+                                <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                   <i class="fs-16 zmdi zmdi-plus"></i>
                                 </div>
                               </div>
                             </td>
-                            <td class="col-lg-2">119.000đ</td>
-                          </tr>
-                          <tr class="table_row">
-                            <td class="col-lg-1">
-                              <div class="how-itemcart1">
-                                <img
-                                  src="images/product/kem-chong-nang/1_SVR_SunCecureBlur_SFP50_50ml.webp"
-                                  alt="IMG"
-                                />
-                              </div>
-                            </td>
-                            <td class="col-lg-4">
-                              Kem Chống Nắng Loreal Bright & Clear UV Defender SPF 50+
-                              PA ++++ 50ml
-                            </td>
-                            <td class="col-lg-2">233.000đ</td>
-                            <td class="col-lg-3">
-                              <div
-                                class="wrap-num-product flex-w justify-content-between align-items-center"
-                              >
-                                <div
-                                  class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m"
-                                >
-                                  <i class="fs-16 zmdi zmdi-minus"></i>
-                                </div>
-                                <input
-                                  class="mtext-104 cl3 txt-center num-product"
-                                  type="number"
-                                  name="num-product1"
-                                  value="1"
-                                />
-                                <div
-                                  class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m"
-                                >
-                                  <i class="fs-16 zmdi zmdi-plus"></i>
-                                </div>
-                              </div>
-                            </td>
-                            <td class="col-lg-2">233.000đ</td>
+                            <td class="col-lg-2">{{gh.sp.gia * gh.soluong}}đ</td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
-                    <div
-                      class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm"
-                    >
-                      <!-- <div class="flex-w flex-m m-r-20 m-tb-5">
-                          <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code">
-                          <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-                            Apply coupon
-                          </div>
-                        </div>
-                        <div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-                          Update Cart
-                        </div> -->
+                    <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
                       <div class="mt-5">
-                        <div
-                          class="d-flex justify-content-between align-items-center pt-3 pb-3"
-                        >
+                        <div class="d-flex justify-content-between align-items-center pt-3 pb-3">
                           <div>
                             <span class="h5 text-dark">Tổng tiền:</span>
                           </div>
                           <div class="ml-auto align-right">
-                            <span class="h4 text-dark">0đ</span>
+                            <span class="h4 text-dark">{{getTotalPrice()}}đ</span>
                           </div>
                         </div>
                       </div>
