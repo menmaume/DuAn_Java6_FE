@@ -1,0 +1,207 @@
+<div class="pagetitle">
+    <h1>Quản Lý Giảm Giá</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item">Forms</li>
+            <li class="breadcrumb-item active">Discount</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Bảng Quản Lý Giảm Giá</h5>
+        <!-- Small tables -->
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">ID Giảm Giá</th>
+                    <th scope="col">Mã Giảm Giá</th>
+                    <th scope="col">Giá Giảm</th>
+                    <th scope="col">Đơn Hàng Tối Thiểu</th>
+                    <th scope="col">Số Tiền Giảm Tối Đa</th>
+                    <th scope="col">Ngày Áp Dụng</th>
+                    <th scope="col">Ngày Kết Thúc</th>
+                    <th scope="col">Số Lượng</th>
+                    <th scope="col">Số Lần Sử Dụng</th>
+                    <th scope="col">Hình</th>
+                    <th scope="col">Hành Động</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="gg in giamgia">
+                    <th scope="row">{{ gg.idGiamGia }}</th>
+                    <td>{{ gg.maGG }}</td>
+                    <td>{{ gg.giamGia }}</td>
+                    <td>{{ gg.dhtt | currency:'VND' }}</td>
+                    <td>{{ gg.stgtd | currency:'VND' }}</td>
+                    <td>{{ gg.tgAp | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ gg.tgKt | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ gg.soLuong }}</td>
+                    <td>{{ gg.slsd }}</td>
+                    <td><img ng-src="{{ gg.img }}" alt="Hình ảnh" style="width: 50px; height: 50px;"></td>
+                    <td>
+                        <div class="icon">
+                            <button class="btn btn-link p-0 me-2" ng-click="editGiamGia(gg)">
+                                <i class="bi bi-pencil-fill"></i>
+                            </button>
+                            <button class="btn btn-link p-0" ng-click="deleteGiamGia(gg)">
+                                <i class="ri-delete-bin-5-fill"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- End small tables -->
+    </div>
+</div>
+
+<section class="section">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Quản Lý Giảm Giá</h5>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row mb-3">
+                                    <label for="inputText1" class="col-sm-4 col-form-label">ID Giảm Giá</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="inputText1"
+                                            ng-model="newGiamGia.idGiamGia" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row mb-3">
+                                    <label for="inputText2" class="col-sm-4 col-form-label">Mã Giảm Giá</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="inputText2"
+                                            ng-model="newGiamGia.maGG">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row mb-3">
+                                    <label for="inputText3" class="col-sm-4 col-form-label">Giá Giảm</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="inputText3"
+                                            ng-model="newGiamGia.giamGia">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row mb-3">
+                                    <label for="inputText4" class="col-sm-4 col-form-label">Đơn Hàng Tối Thiểu</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="inputText4"
+                                            ng-model="newGiamGia.dhtt">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row mb-3">
+                                    <label for="inputText5" class="col-sm-4 col-form-label">Số Tiền Giảm Tối Đa</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="inputText5"
+                                            ng-model="newGiamGia.stgtd">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row mb-3">
+                                    <label for="inputDate1" class="col-sm-4 col-form-label">Ngày Áp Dụng</label>
+                                    <div class="col-sm-8">
+                                        <input type="date" class="form-control" id="inputDate1"
+                                            ng-model="newGiamGia.tgAp">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="row mb-3">
+                                    <label for="inputText6" class="col-sm-4 col-form-label">Số Lượng</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="inputText6"
+                                            ng-model="newGiamGia.soLuong">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row mb-3">
+                                    <label for="inputDate2" class="col-sm-4 col-form-label">Ngày Kết Thúc</label>
+                                    <div class="col-sm-8">
+                                        <input type="date" class="form-control" id="inputDate2"
+                                            ng-model="newGiamGia.tgKt">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row mb-3">
+                                    <label for="inputfile1" class="col-sm-4 col-form-label">Hình ảnh</label>
+                                    <div class="col-sm-8">
+                                        <input type="file" class="form-control" id="inputfile1"
+                                            ng-model="newGiamGia.img" ng-change="uploadFile($event)">
+                                        <!-- Hiển thị hình ảnh đã chọn -->
+                                        <img ng-src="{{newGiamGia.previewImg}}" alt="Hình ảnh"
+                                            style="width: 100px; height: 100px; margin-top: 10px;"
+                                            ng-if="newGiamGia.previewImg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end mt-4">
+                            <button type="button" class="btn btn-success me-2" ng-click="btnLuu()"
+                                ng-if="!selectedGiamGia">Thêm</button>
+                            <button type="button" class="btn btn-warning me-2" ng-click="updateGiamGia()"
+                                ng-if="selectedGiamGia">Sửa</button>
+                            <button type="button" class="btn btn-secondary" ng-click="clearForm()">Làm Mới</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Toast Container -->
+<div class="toast-container position-fixed top-0 end-0 p-3">
+    <!-- Toast lỗi -->
+    <div id="errorToast" class="toast align-items-center text-white bg-danger border-0" role="alert"
+        aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                <i class="fas fa-exclamation-circle me-2"></i>
+                <strong>Lỗi!</strong> Thao tác không thành công.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+        <!-- Thanh tiến trình -->
+        <div class="toast-progress">
+            <div id="errorToastProgressBar" class="toast-progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- Toast thành công -->
+    <div id="successToast" class="toast align-items-center text-white bg-success border-0" role="alert"
+        aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                <i class="fas fa-check-circle me-2"></i>
+                <strong>Thành công!</strong> Thao tác đã hoàn tất thành công.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+        <!-- Thanh tiến trình -->
+        <div class="toast-progress">
+            <div id="successToastProgressBar" class="toast-progress-bar"></div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/angular@1.8.2/angular.min.js"></script>
