@@ -320,11 +320,11 @@ app.controller(
       );
     };
 
-    // Hàm để lấy danh sách giỏ hàng
+    // Hàm để lấy danh sách người dùng
     $scope.getGioHang = function () {
       $http({
         method: "GET",
-        url: API_URL + 'giohang/getcart',
+        url: API_URL + 'taikhoan',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -332,11 +332,11 @@ app.controller(
       }).then(
         function successCallback(response) {
           $scope.giohang = response.data;
-          console.log("Cart data received:", response.data);
+          console.log("User:", response.data);
         },
         function errorCallback(response) {
-          console.error("Error fetching cart:", response);
-          alert("Lỗi khi tải giỏ hàng");
+          console.error("Error:", response);
+          alert("Lỗi khi tải ");
         }
       );
     };
@@ -351,10 +351,79 @@ app.controller(
   }
 );
 
-app.controller("profileCtrl", function($scope, SharedService) {
-  $scope.token = SharedService.getData();
+app.controller("profileCtrl", function($scope,$http) {
+  var token = getCookie('token')
+  var username = getCookie('username')
+  // console.log(token)
 
-  console.log($scope.token)
+  $scope.TaiKhoan = [];
+  $scope.newTaiKhoan = {};
+
+  // Load products from the API
+  $http({
+    method: "GET",
+    url: "http://localhost:8080/api/taikhoan/"+username,
+  }).then(
+    function successCallback(response) {
+      //console.log(url)
+      $scope.TaiKhoan = response.data;
+      console.log(response.data);
+    },
+    function errorCallback(response) {
+      console.error("Error :", response);
+    }
+  );
+
+  // Edit 
+  //$scope.selectedTaiKhoan = angular.copy(tk); // Lưu 
+  $scope.newTaiKhoan = angular.copy(tk); // Đổ dữ liệu lên form
+   
+   
+
+  // // Update 
+  // $scope.updateTaiKhoan = function () {
+  //   if (!$scope.selectedTaiKhoan || !$scope.newTaiKhoan.id_taiKhoan) {
+  //     showToast('errorToast');
+  //     return;
+  //   }
+
+  //   var data = $scope.newTaiKhoan;
+
+  //   $http.put(API_URL + "TaiKhoan/" + $scope.selectedTaiKhoan.id_taiKhoan, data).then(
+  //     function successCallback(response) {
+  //       showToast('successToast');
+  //       const index = $scope.taiKhoan.findIndex(tk => tk.id_taiKhoan === $scope.selectedTaiKhoan.id_taiKhoan);
+  //       if (index !== -1) {
+  //         $scope.taiKhoan[index] = response.data;
+  //       }
+  //       $scope.newTaiKhoan = {}; // Xóa form sau khi cập nhật
+  //       $scope.selectedTaiKhoan = null; // Reset 
+  //     },
+  //     function errorCallback(response) {
+  //       showToast('errorToast');
+  //     }
+  //   );
+  // };
+
 });
 
 app.controller("cartCtrl", function ($scope, $rootScope, $http) {});
+
+function getCookie(cookieName) {
+  // Lấy toàn bộ chuỗi cookie từ document.cookie
+  var cookies = document.cookie.split(";");
+
+  // Duyệt qua từng cookie và tìm cookie có tên phù hợp
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i].trim();
+
+    // Nếu cookie bắt đầu bằng tên được tìm kiếm
+    if (cookie.indexOf(cookieName + "=") === 0) {
+      // Trả về giá trị của cookie
+      return cookie.substring(cookieName.length + 1, cookie.length);
+    }
+  }
+
+  // Nếu không tìm thấy cookie, trả về chuỗi rỗng
+  return "";
+}

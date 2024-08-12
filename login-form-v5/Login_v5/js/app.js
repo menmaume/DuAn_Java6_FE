@@ -22,7 +22,9 @@ app.controller("loginCtrl", function ($scope, $http,$rootScope) {
         }).then(
             function (response) {
                 $rootScope.token =response.data.accessToken;
+                $rootScope.username =response.data.userId;
                 $rootScope.role =response.data.roles[0];
+                console.log(response.data);
             
                 if($rootScope.role=='Admin'){
                     window.location.href = '/Admin/FE_bctk.html';
@@ -31,7 +33,10 @@ app.controller("loginCtrl", function ($scope, $http,$rootScope) {
                 if($rootScope.role=='User'){
                     window.location.href = '/User/layout.html';
                 }   
-            
+
+                document.cookie = "token=" + $rootScope.token + ";path=/";
+                document.cookie = "username=" + $rootScope.username + ";path=/";
+                
             },
             function (error) {
                 console.log("Đăng nhập thất bại:", error);
@@ -47,3 +52,4 @@ app.controller("loginCtrl", function ($scope, $http,$rootScope) {
         );
     };
 });
+
