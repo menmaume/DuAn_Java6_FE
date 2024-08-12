@@ -1,5 +1,5 @@
 <div class="pagetitle">
-    <h1> Chi Tiết Sản Phẩm</h1>
+    <h1>Chi Tiết Sản Phẩm</h1>
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -11,8 +11,8 @@
 
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title">Chi Tiết Sản Phẩm</h5>
-        <!-- Small tables -->
+        <h5 class="card-title">Danh Sách Chi Tiết Sản Phẩm</h5>
+        <!-- Product Details Table -->
         <table class="table table-sm">
             <thead>
                 <tr>
@@ -22,33 +22,34 @@
                     <th scope="col">Mã Công Dụng</th>
                     <th scope="col">Số Lượng</th>
                     <th scope="col">Giá</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">123</th>
-                    <td> Chà Nel </td>
-                    <td> Gu Sờ </td>
-                    <td> A di đà </td>
-                    <td> 10 </td>
-                    <td> 1.000.000</td>
-
-                </tr>
-                <tr>
-                    <th scope="row">123</th>
-                    <td> Chà Nel </td>
-                    <td> Gu Sờ </td>
-                    <td> A di đà </td>
-                    <td> 10 </td>
-                    <td> 1.000.000</td>
-
+                <tr ng-repeat="ctsp in chiTietSanPham">
+                    <th scope="row">{{ctsp.maCTSP}}</th>
+                    <td>{{ctsp.maSP.maSP}}</td>
+                    <td>{{ctsp.dungTich.maDungTich}}</td>
+                    <td>{{ctsp.congDung.maCD}}</td>
+                    <td>{{ctsp.soluong}}</td>
+                    <td>{{ctsp.gia |currency: 'VND'}}</td>
+                    <td>
+                        <div class="icon">
+                            <button class="btn btn-link p-0 me-2" ng-click="editChiTietSanPham(ctsp)">
+                                <i class="bi bi-pencil-fill"></i>
+                            </button>
+                            <button class="btn btn-link p-0" ng-click="confirmDelete(ctsp)">
+                                <i class="ri-delete-bin-5-fill"></i>
+                            </button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        <!-- End small tables -->
-
+        <!-- End Product Details Table -->
     </div>
 </div>
+
 <section class="section">
     <div class="row">
         <div class="col-12">
@@ -57,72 +58,110 @@
                     <h5 class="card-title">Chi Tiết Sản Phẩm</h5>
                     <form>
                         <div class="row mb-3">
-                            <label for="inputText1" class="col-sm-4 col-form-label">Mã Chi Tiết SP</label>
+                            <label for="inputMaChiTietSP" class="col-sm-4 col-form-label">Mã Chi Tiết SP</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputText1" disabled>
+                                <input type="text" class="form-control" id="inputMaChiTietSP"
+                                    ng-model="newChiTietSanPham.maCTSP" disabled>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="selectBrand" class="col-sm-4 col-form-label">Mã Sản Phẩm</label>
+                            <label for="selectSanPham" class="col-sm-4 col-form-label">Mã Sản Phẩm</label>
                             <div class="col-sm-8">
-                                <select class="form-control" id="selectBrand">
+                                <select class="form-control" id="selectSanPham" ng-model="newChiTietSanPham.maSP.maSP">
                                     <option value="">Chọn Mã Sản Phẩm</option>
-                                    <option value="brand1">Chà Neo</option>
-                                    <option value="brand2">Gu Xì</option>
-                                    <option value="brand3">Đì O</option>
-                                    <!-- Add other options as needed -->
+                                    <option ng-repeat="sp in chiTietSanPham" value="{{sp.maSP.maSP}}">
+                                        {{sp.maSP.maSP}}
+                                    </option>
                                 </select>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="selectBrand" class="col-sm-4 col-form-label">Mã Dung Tích</label>
+                            <label for="selectDungTich" class="col-sm-4 col-form-label">Mã Dung Tích</label>
                             <div class="col-sm-8">
-                                <select class="form-control" id="selectBrand">
+                                <select class="form-control" id="selectDungTich"
+                                    ng-model="newChiTietSanPham.dungTich.maDungTich">
                                     <option value="">Chọn Mã Dung Tích</option>
-                                    <option value="brand1">Chà Neo</option>
-                                    <option value="brand2">Gu Xì</option>
-                                    <option value="brand3">Đì O</option>
-                                    <!-- Add other options as needed -->
+                                    <option ng-repeat="dt in chiTietSanPham" value="{{dt.dungTich.maDungTich}}">
+                                        {{dt.dungTich.maDungTich}}
+                                    </option>
                                 </select>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="selectBrand" class="col-sm-4 col-form-label">Mã Công Dụng</label>
+                            <label for="selectCongDung" class="col-sm-4 col-form-label">Mã Công Dụng</label>
                             <div class="col-sm-8">
-                                <select class="form-control" id="selectBrand">
+                                <select class="form-control" id="selectCongDung"
+                                    ng-model="newChiTietSanPham.congDung.maCD">
                                     <option value="">Chọn Mã Công Dụng</option>
-                                    <option value="brand1">Chà Neo</option>
-                                    <option value="brand2">Gu Xì</option>
-                                    <option value="brand3">Đì O</option>
-                                    <!-- Add other options as needed -->
+                                    <option ng-repeat="cd in chiTietSanPham" value="{{cd.congDung.maCD}}">
+                                        {{cd.congDung.maCD}}
+                                    </option>
                                 </select>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="inputText2" class="col-sm-4 col-form-label">Số Lượng</label>
+                            <label for="inputSoLuong" class="col-sm-4 col-form-label">Số Lượng</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputText2">
+                                <input type="number" class="form-control" id="inputSoLuong"
+                                    ng-model="newChiTietSanPham.soluong" min="1">
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="inputPrice" class="col-sm-4 col-form-label">Giá</label>
+                            <label for="inputGia" class="col-sm-4 col-form-label">Giá</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputPrice" oninput="dinhDangVND(this)">
+                                <input type="text" class="form-control" id="inputGia" ng-model="newChiTietSanPham.gia">
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mt-4">
-                            <button type="button" class="btn btn-success me-2">Thêm</button>
-                            <button type="button" class="btn btn-warning me-2">Sửa</button>
-                            <button type="button" class="btn btn-danger">Xóa</button>
+                            <button type="button" class="btn btn-success me-2" ng-if="!selectedChiTietSanPham"
+                                ng-click="btnLuu()">Thêm</button>
+                            <button type="button" class="btn btn-warning me-2" ng-click="updateChiTietSanPham()"
+                                ng-if="selectedChiTietSanPham">Sửa</button>
+                            <button type="button" class="btn btn-secondary" ng-click="resetForm()"> Làm Mới</button>
                         </div>
                     </form><!-- End General Form Elements -->
                 </div>
             </div>
         </div>
-
-
     </div>
-
 </section>
 
-</main>
+<!-- Toast Container -->
+<div class="toast-container position-fixed top-0 end-0 p-3">
+    <!-- Toast lỗi -->
+    <div id="errorToast" class="toast align-items-center text-white bg-danger border-0" role="alert"
+        aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                <i class="fas fa-exclamation-circle me-2"></i>
+                <strong>Lỗi!</strong> Thao tác không thành công.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+        <!-- Thanh tiến trình -->
+        <div class="toast-progress">
+            <div id="errorToastProgressBar" class="toast-progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- Toast thành công -->
+    <div id="successToast" class="toast align-items-center text-white bg-success border-0" role="alert"
+        aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                <i class="fas fa-check-circle me-2"></i>
+                <strong>Thành công!</strong> Thao tác đã hoàn tất thành công.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+        <!-- Thanh tiến trình -->
+        <div class="toast-progress">
+            <div id="successToastProgressBar" class="toast-progress-bar"></div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/angular@1.8.2/angular.min.js"></script>

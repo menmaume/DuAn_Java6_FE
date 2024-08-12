@@ -18,24 +18,30 @@
                 <tr>
                     <th scope="col">Mã Dung Tích</th>
                     <th scope="col">Dung Tích</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">123</th>
-                    <td> 3 Miếng </td>
-
-                </tr>
-                <tr>
-                    <th scope="row">123</th>
-                    <td> 100ml</td>
+                <tr ng-repeat="dt in dungtich">
+                    <th scope="row">{{dt.maDungTich}}</th>
+                    <td>{{dt.dungTich}}</td>
+                    <td>
+                        <div class="icon">
+                            <button class="btn btn-link p-0 me-2" ng-click="editDungTich(dt)">
+                                <i class="bi bi-pencil-fill"></i>
+                            </button>
+                            <button class="btn btn-link p-0" ng-click="confirmDelete(dt)">
+                                <i class="ri-delete-bin-5-fill"></i>
+                            </button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
         <!-- End small tables -->
-
     </div>
 </div>
+
 <section class="section">
     <div class="row">
         <div class="col-12">
@@ -46,27 +52,66 @@
                         <div class="row mb-3">
                             <label for="inputText1" class="col-sm-4 col-form-label">Mã Dung Tích</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputText1" disabled>
+                                <input type="text" class="form-control" id="inputText1"
+                                    ng-model="newDungTich.maDungTich" disabled>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="inputText2" class="col-sm-4 col-form-label"> Dung Tích</label>
+                            <label for="inputText2" class="col-sm-4 col-form-label">Dung Tích</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="inputText2">
+                                <input type="text" class="form-control" id="inputText2" ng-model="newDungTich.dungTich">
                             </div>
                         </div>
-
                         <div class="d-flex justify-content-end mt-4">
-                            <button type="button" class="btn btn-success me-2">Thêm</button>
-                            <button type="button" class="btn btn-warning me-2">Sửa</button>
-                            <button type="button" class="btn btn-danger">Xóa</button>
+                            <button type="button" class="btn btn-success me-2" ng-click="btnLuu()"
+                                ng-if="!selectedDungTich">Thêm</button>
+                            <button type="button" class="btn btn-warning me-2" ng-click="updateDungTich()"
+                                ng-if="selectedDungTich">Sửa</button>
+
+                            <button type="button" class="btn btn-secondary" ng-click="resetForm()">Làm Mới</button>
                         </div>
                     </form><!-- End General Form Elements -->
                 </div>
             </div>
         </div>
-
-
+    </div>
+</section>
+<!-- Toast Container -->
+<div class="toast-container position-fixed top-0 end-0 p-3">
+    <!-- Toast lỗi -->
+    <div id="errorToast" class="toast align-items-center text-white bg-danger border-0" role="alert"
+        aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                <i class="fas fa-exclamation-circle me-2"></i>
+                <strong>Lỗi!</strong> Thao tác không thành công.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+        <!-- Thanh tiến trình -->
+        <div class="toast-progress">
+            <div id="errorToastProgressBar" class="toast-progress-bar"></div>
+        </div>
     </div>
 
-</section>
+    <!-- Toast thành công -->
+    <div id="successToast" class="toast align-items-center text-white bg-success border-0" role="alert"
+        aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                <i class="fas fa-check-circle me-2"></i>
+                <strong>Thành công!</strong> Thao tác đã hoàn tất thành công.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+        <!-- Thanh tiến trình -->
+        <div class="toast-progress">
+            <div id="successToastProgressBar" class="toast-progress-bar"></div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/angular@1.8.2/angular.min.js"></script>
