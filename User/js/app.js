@@ -1,7 +1,12 @@
 let app = angular.module("app-user", ["ngRoute"]);
 const API_URL = "http://localhost:8080/api/";
-app.controller("userCtrl", function ($scope) {});
+app.controller("userCtrl", function ($scope) {
+});
+
+
+
 app.config(function ($routeProvider) {
+  
   $routeProvider
     .when("/", {
       templateUrl: "views/home.html",
@@ -60,6 +65,7 @@ app.config(function ($routeProvider) {
     });
 });
 app.controller("homeCtrl", function ($scope, $rootScope, $http, $location) {
+  $scope.gt = $cookies.get("token");
   $scope.sanpham = [];
   $scope.loaisp = [];
   $scope.hinh = [];
@@ -619,3 +625,13 @@ app.controller('cartCtrl', function($scope, $rootScope, $http, $timeout) {
 }
 
 });
+
+// app.run(function ($rootScope, $cookies) {
+//   // Kiểm tra cookie và lưu trữ vào $rootScope
+//   $rootScope.isHeaderVisible = !!$cookies.get("userToken");
+
+//   // Lắng nghe sự kiện khi route thay đổi để cập nhật giá trị
+//   $rootScope.$on('$routeChangeStart', function () {
+//     $rootScope.isHeaderVisible = !!$cookies.get("userToken");
+//   });
+// });

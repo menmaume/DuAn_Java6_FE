@@ -28,7 +28,7 @@
 <!--===============================================================================================-->
    
 </head>
-<body>
+<body ng-app="app-login" ng-controller="signupCtrl">
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/mp-01.jpg');">
@@ -44,7 +44,7 @@
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Nhập Tài Khoản">
-						<input class="input100" type="text" name="username" >
+						<input class="input100" type="text" name="username" ng-model="tk.username">
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -54,7 +54,7 @@
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Nhập mật khẩu">
-						<input class="input100" type="password" name="pass" >
+						<input class="input100" type="password" name="pass" ng-model="tk.password">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -64,14 +64,14 @@
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Nhập xác nhận mật khẩu">
-						<input class="input100" type="password" name="pass" >
+						<input class="input100" type="password" name="passcf" ng-model="tk.passcf">
 						<span class="focus-input100"></span>
 					</div>
 
 
                    
 					<div class="container-login100-form-btn m-t-17">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" ng-click="dangKy()">
 							Đăng Ký
 						</button>
 					</div>
@@ -109,6 +109,9 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+	<script src="/js/angular.min.js"></script>
+	<script src="/js/angular-route.js"></script>
+	<script src="/login-form-v5/Login_v5/js/app.js"></script>
 
 </body>
 </html>

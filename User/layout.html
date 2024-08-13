@@ -113,7 +113,7 @@
                 <a href="" class="flex-c-m trans-04 p-lr-25"> Đăng ký </a>
               </div>
     
-              <div>
+              <div ng-if="isHeaderVisible">
                 <a href="/" class="flex-c-m trans-04 p-lr-25 dropdown-toggle" data-toggle="dropdown">
                   <i class="zmdi zmdi-account"></i>
                   Tài khoản
@@ -251,30 +251,32 @@
           </li>
         </ul>
 
-        <ul class="main-menu-m">
-          <li>
-            <a href="#">Trang chủ</a>
-            <span class="arrow-main-menu-m">
-              <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </span>
-          </li>
-
-          <li>
-            <a href="#product">Sản phẩm</a>
-          </li>
-
-          <li>
-            <a href="#blog">Bài viết</a>
-          </li>
-
-          <li>
-            <a href="#about">Về chúng tôi</a>
-          </li>
-
-          <li>
-            <a href="#contact">Liên hệ</a>
-          </li>
-        </ul>
+        <div >
+          <ul class="main-menu-m">
+            <li>
+              <a href="#">Trang chủ</a>
+              <span class="arrow-main-menu-m">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </span>
+            </li>
+  
+            <li>
+              <a href="#product">Sản phẩm</a>
+            </li>
+  
+            <li>
+              <a href="#blog">Bài viết</a>
+            </li>
+  
+            <li>
+              <a href="#about">Về chúng tôi</a>
+            </li>
+  
+            <li>
+              <a href="#contact">Liên hệ</a>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <!-- Modal Search -->
